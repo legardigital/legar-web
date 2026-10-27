@@ -465,4 +465,4 @@ function w(){xs.forEach(function(x){x.style.maxWidth='none';x.dataset.w=x.scroll
 function open(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
 function close(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
 function loop(){setTimeout(function(){open();setTimeout(function(){close();loop()},4200)},1600)}
-var st=false;function go(){if(st)return;st=true;w();loop()}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w()});setTimeout(go,300);window.addEventListener('resize',w)})();</script></body></html>
+var st=false;function go(){if(st)return;st=true;w();loop()}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w()});if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{rootMargin:'0px 0px -25% 0px'});io.observe(el)}else setTimeout(go,300);window.addEventListener('resize',w)})();</script></body></html>
