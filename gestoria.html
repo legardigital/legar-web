@@ -867,7 +867,7 @@ I.onload=()=>{raf=requestAnimationFrame(frame)};I.onerror=finish;I.src=lg.curren
 <script>
 (()=>{const nav=document.getElementById('ix');if(!nav)return;const box=nav.firstChild;
 const F=(s,t)=>{const a=document.querySelectorAll(s);for(const e of a){if(!t||e.textContent.indexOf(t)>-1)return e}return null};
-const S=[['Inicio','.c.top'],['Mapa','#mapa'],['Qué hacemos','#serv'],['Por qué legAR','.vs'],['Cómo trabajamos',null,'trabajamos'],['Quiénes somos','.ab'],['Sumate a nuestra red de contactos','#red'],['Reseñas','#rese'],['Preguntas frecuentes','.faq'],['Contacto','.ct']];
+const S=[['Inicio','.c.top'],['Mapa','#mapa'],['Qué hacemos','#serv'],['Cómo trabajamos',null,'trabajamos'],['Quiénes somos','.ab'],['Sumate a nuestra red de contactos','#red'],['Reseñas','#rese'],['Preguntas frecuentes','.faq'],['Contacto','.ct']];
 const items=[];S.forEach(r=>{let el=r[1]?document.querySelector(r[1]):null;if(!el&&r[2]){const h=[...document.querySelectorAll('h2')].find(h=>h.textContent.indexOf(r[2])>-1);el=h?h.closest('section'):null}
 if(!el)return;const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ir a '+r[0]);b.innerHTML='<i class="d"></i><span class="l">'+r[0]+'</span>';box.appendChild(b);items.push({el,b,n:r[0]})});
 const mb=document.createElement('button');mb.type='button';mb.className='m';mb.setAttribute('aria-label','Mostrar nombres del índice');mb.setAttribute('aria-expanded','false');mb.innerHTML='<i class="d"></i><span class="l">Índice</span>';box.insertBefore(mb,box.firstChild);
