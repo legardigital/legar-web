@@ -1,0 +1,4 @@
+# Sitio estático: se publica tal cual desde la raíz del repositorio.
+[build]
+  publish = "."
+  command = ""
