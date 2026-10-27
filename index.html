@@ -392,27 +392,23 @@ html.js .rev{opacity:1;transform:none}
 <div class="doors" style="margin-top:22px"><a class="btn" href="https://wa.me/5492215581661?text=Hola%2C%20vengo%20de%20la%20web%20de%20legAR.%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener">Hablemos<small>Te respondemos por WhatsApp</small></a></div></section>
 </main>
 <footer>© legAR · antes Diligencias La Plata<br><a href="index.html">Nosotros</a> · <a href="gestoria.html">Gestoría</a> · <a href="marketing.html">Marketing jurídico</a> · <a href="novedades.html">Novedades</a></footer>
-<script>(function(){var el=document.querySelector('.lgx');if(!el)return;var xs=el.querySelectorAll('.lx');
-if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.classList.add('open');return}
-function w(){xs.forEach(function(x){x.style.maxWidth='none';x.dataset.w=x.scrollWidth;x.style.maxWidth=el.classList.contains('open')?x.dataset.w+'px':'0px'})}
-function open(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
-function close(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
-function loop(){setTimeout(function(){open();setTimeout(function(){close();loop()},4200)},1600)}
-var st=false;function go(){if(st)return;st=true;w();loop()}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w()});if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{rootMargin:'0px 0px -25% 0px'});io.observe(el)}else setTimeout(go,300);window.addEventListener('resize',w)})();</script><script>(function(){var ls=document.querySelectorAll('.dic .da');if(!('IntersectionObserver' in window)){ls.forEach(function(l){l.classList.add('on')});return}
+<script>(function(){var ls=document.querySelectorAll('.dic .da');if(!('IntersectionObserver' in window)){ls.forEach(function(l){l.classList.add('on')});return}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=[].indexOf.call(ls,e.target);setTimeout(function(){e.target.classList.add('on')},150+(i%4)*120);io.unobserve(e.target)}})},{rootMargin:'0px 0px -18% 0px'});ls.forEach(function(l){io.observe(l)})})();</script>
 <script>(function(){var bs=document.querySelectorAll('.dfit');if(!bs.length)return;function f(){bs.forEach(function(b){b.style.fontSize='';var w=b.parentNode.clientWidth,n=b.scrollWidth;if(n>w)b.style.fontSize=Math.max(parseFloat(getComputedStyle(b).fontSize)*w/n*.97,11)+'px'})}f();window.addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();</script>
 <script>(function(){var h=document.querySelector('.h2fit');if(!h)return;function f(){h.style.fontSize='';var w=h.parentNode.clientWidth,n=h.scrollWidth;if(n>w)h.style.fontSize=parseFloat(getComputedStyle(h).fontSize)*w/n*.96+'px'}f();window.addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();</script>
 <script>(function(){var e=document.querySelector('.sello');if(!e||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;e.classList.add('pre');var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){setTimeout(function(){e.classList.remove('pre');e.classList.add('go')},120);io.disconnect()}},{rootMargin:'0px 0px -15% 0px'});io.observe(e)})();</script>
+
 <script>(function(){var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var CK='<i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
-document.querySelectorAll('.lgx[data-pre]').forEach(function(el,n){var pre=el.dataset.pre,mid=el.dataset.mid||'',post=el.dataset.post;
-el.innerHTML='<span class="lx">'+pre+'</span><b>leg</b>'+(mid?'<span class="lx">'+mid+'</span>':'')+'<b>AR</b><span class="lx">'+post+'</span>'+CK;
-var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp'),base=parseFloat(getComputedStyle(el).fontSize);
-function fit(){el.style.fontSize='';xs.forEach(function(x){x.style.maxWidth='none'});st.style.maxWidth='1em';var av=el.clientWidth-22,nd=el.scrollWidth;if(nd>av)el.style.fontSize=Math.max(base*av/nd,11)+'px';
-xs.forEach(function(x){x.dataset.w=x.scrollWidth;x.style.maxWidth=(rm||el.classList.contains('open'))?x.dataset.w+'px':'0px'});st.style.maxWidth=''}
-fit();if(rm){el.classList.add('open');return}
-function op(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
+document.querySelectorAll('.lgx').forEach(function(el){
+if(el.dataset.pre!==undefined){var mid=el.dataset.mid||'';el.innerHTML='<span class="lx">'+el.dataset.pre+'</span><b>leg</b>'+(mid?'<span class="lx">'+mid+'</span>':'')+'<b>AR</b><span class="lx">'+el.dataset.post+'</span>'+CK}
+var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp');el.style.fontSize='';var base=parseFloat(getComputedStyle(el).fontSize),fs0=el.getAttribute('style')||'';
+function fit(){el.style.fontSize='';xs.forEach(function(x){x.style.maxWidth='none'});if(st)st.style.maxWidth='1em';var av=el.clientWidth-22,nd=el.scrollWidth;if(nd>av)el.style.fontSize=Math.max(parseFloat(getComputedStyle(el).fontSize)*av/nd,11)+'px';
+xs.forEach(function(x){x.dataset.w=x.scrollWidth;x.style.maxWidth=(rm||el.classList.contains('open'))?x.dataset.w+'px':'0px'});if(st)st.style.maxWidth=''}
+fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('resize',fit);
+if(rm){el.classList.add('open');return}
+var t;function op(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
 function cl(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
-function loop(){setTimeout(function(){op();setTimeout(function(){cl();loop()},4200)},1600)}
-if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();loop()}},{rootMargin:'0px 0px -25% 0px'});io.observe(el)}else setTimeout(loop,300);window.addEventListener('resize',fit)})})();</script>
+if(!('IntersectionObserver' in window)){setTimeout(op,900);return}
+new IntersectionObserver(function(es){es.forEach(function(e){clearTimeout(t);if(e.isIntersecting)t=setTimeout(op,900);else cl()})},{rootMargin:'0px 0px -20% 0px'}).observe(el)})})();</script>
 </body></html>
