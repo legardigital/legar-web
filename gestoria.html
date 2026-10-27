@@ -301,7 +301,7 @@ footer a{color:#B8C0CE}
 <h1>El nexo <span class="hl">presencial</span> de profesionales de todo el país.</h1>
 <div class="doors"><button class="btn go" type="button">Gestionar un trámite<small>Te respondemos por WhatsApp</small></button></div>
 <ul class="tl"><li>Vamos en persona</li><li>Cobertura en todo el país</li><li>Seguimiento real de tu trámite</li></ul>
-<div class="mqw" style="margin:14px 0 0;border:0;background:none;padding:6px 0"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Lo legal, en toda Argentina"><span class="lx">Lo&nbsp;</span><b>leg</b><span class="lx">al, en toda&nbsp;</span><b>AR</b><span class="lx">gentina</span><i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i></div></div>
+<div class="mqw" style="margin:14px 0 0;border:0;background:none;padding:6px 0"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Lo legal, en toda Argentina" data-pre="Lo&nbsp;" data-mid="al, en toda&nbsp;" data-post="gentina"></div></div>
 <button class="lk go" type="button" data-p="1">¿Sos particular? También te ayudamos</button>
 <div class="bub" id="bub" role="group" aria-label="Ventajas y trámites, burbujas interactivas">
 <button class="bb" type="button" data-t="Registros"><span class="orb" style="--a:20deg"><b></b></span><em>Registros</em></button>
@@ -329,6 +329,8 @@ footer a{color:#B8C0CE}
 </div>
 <button class="btn go" type="button">Consultanos tu trámite<small>Te respondemos por WhatsApp</small></button>
 </div></section>
+<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="c"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Delegar nunca fue tan fácil" data-pre="De" data-post="&nbsp;nunca fue tan fácil"></div></div></div>
+
 
 <div class="gb b" aria-hidden="true" style="margin:0 -20px 34px"></div>
 <section id="serv" style="padding-top:0"><div class="c">
@@ -385,6 +387,8 @@ footer a{color:#B8C0CE}
 <button class="btn" type="submit">Quiero sumarme<small>Te contactamos por WhatsApp</small></button>
 </form>
 </div></section>
+<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="c"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Llegar a todo el país, sin moverte" data-pre="L" data-post="&nbsp;a todo el país, sin moverte"></div></div></div>
+
 <div class="gb b" aria-hidden="true"></div>
 <section id="rese"><div class="c">
 <h2 class="rev">Lo que dicen <span class="hl">nuestros clientes</span></h2>
@@ -886,21 +890,17 @@ const set=n=>b.textContent='+'+n;if(matchMedia('(prefers-reduced-motion:reduce)'
 let done=0;const run=()=>{if(done)return;if(document.getElementById('eg'))return setTimeout(run,200);done=1;const t0=performance.now(),D=1400;set(0);const f=t=>{const k=Math.min(1,(t-t0)/D),v=Math.round(ALIADOS*(1-Math.pow(1-k,3)));set(v);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)};run()})();
 </script>
 
-<script>(function(){var el=document.querySelector('.lgx');if(!el)return;
-var P=[["Lo ","al, en toda ","gentina","Lo legal, en toda Argentina"],["De",""," nunca fue tan fácil","Delegar nunca fue tan fácil"],["L",""," a todo el país, sin moverte","Llegar a todo el país, sin moverte"]];
+<script>(function(){var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var CK='<i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
-var base=parseFloat(getComputedStyle(el).fontSize),k=0,xs=[];
-var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function build(p){el.classList.remove('open');el.style.fontSize='';el.setAttribute('aria-label','legAR: '+p[3]);
-el.innerHTML='<span class="lx">'+p[0]+'</span><b>leg</b>'+(p[1]?'<span class="lx">'+p[1]+'</span>':'')+'<b>AR</b><span class="lx">'+p[2]+'</span>'+CK;
-xs=el.querySelectorAll('.lx');
-xs.forEach(function(x){x.style.maxWidth='none'});var st=el.querySelector('.stp');st.style.maxWidth='1em';
-var avail=el.clientWidth-22,need=el.scrollWidth;var fs=base;if(need>avail){fs=Math.max(base*avail/need,11);el.style.fontSize=fs+'px'}
-xs.forEach(function(x){x.dataset.w=x.scrollWidth;x.style.maxWidth=rm?'none':'0px'});st.style.maxWidth='';if(rm)el.classList.add('open')}
-function open(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
-function close(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
-function cycle(){build(P[k]);if(rm){setTimeout(function(){k=(k+1)%P.length;cycle()},4000);return}
-setTimeout(function(){open();setTimeout(function(){close();setTimeout(function(){k=(k+1)%P.length;cycle()},1150)},4200)},1400)}
-setTimeout(cycle,300)})();</script>
+document.querySelectorAll('.lgx[data-pre]').forEach(function(el,n){var pre=el.dataset.pre,mid=el.dataset.mid||'',post=el.dataset.post;
+el.innerHTML='<span class="lx">'+pre+'</span><b>leg</b>'+(mid?'<span class="lx">'+mid+'</span>':'')+'<b>AR</b><span class="lx">'+post+'</span>'+CK;
+var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp'),base=parseFloat(getComputedStyle(el).fontSize);
+function fit(){el.style.fontSize='';xs.forEach(function(x){x.style.maxWidth='none'});st.style.maxWidth='1em';var av=el.clientWidth-22,nd=el.scrollWidth;if(nd>av)el.style.fontSize=Math.max(base*av/nd,11)+'px';
+xs.forEach(function(x){x.dataset.w=x.scrollWidth;x.style.maxWidth=(rm||el.classList.contains('open'))?x.dataset.w+'px':'0px'});st.style.maxWidth=''}
+fit();if(rm){el.classList.add('open');return}
+function op(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
+function cl(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
+function loop(){setTimeout(function(){op();setTimeout(function(){cl();loop()},4200)},1600)}
+setTimeout(loop,300+n*700);window.addEventListener('resize',fit)})})();</script>
 </body>
 </html>
