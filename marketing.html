@@ -342,7 +342,8 @@ html.js .rev{opacity:1;transform:none}
 .hcw{text-align:center;padding:0 20px;margin:2px 0 6px}.chip.hc{background:rgba(255,255,255,.04);border:1px solid rgba(157,178,200,.4);border-radius:12px;color:#c9d6e6;font-size:.88rem;padding:.55rem 1rem;line-height:1.35}.chip.hc b{color:#fff;font-weight:700}
 .tabs nav{align-items:center}.tabs a{display:inline-flex;align-items:center;line-height:1.2}.tabs a.tlg{align-self:stretch}.tabs a.tlg img{height:14px;width:auto;display:block}.tabs a.tlg .ia{display:none}.tabs a.tlg[aria-current=page] .ib{display:none}.tabs a.tlg[aria-current=page] .ia{display:block}
 .lgx .stp{display:inline-block;width:.95em;max-width:0;height:.95em;margin-left:0;overflow:visible;vertical-align:-.08em;opacity:0;transform:scale(2.4) rotate(-14deg);transition:opacity .25s ease,transform .35s cubic-bezier(.3,1.6,.5,1)}.lgx .stp svg{width:100%;height:100%;display:block}.lgx.open .stp{opacity:1;transform:none;max-width:1em;margin-left:.08em;transition-delay:.95s}@media (prefers-reduced-motion:reduce){.lgx .stp{opacity:1;transform:none;transition:none}}
-</style></head><body><script>(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}function t(){if(!location.hash)window.scrollTo(0,0)}t();window.addEventListener('load',t);window.addEventListener('pageshow',t)})();</script>
+</style><style>.h2lg{height:1.08em;width:auto;vertical-align:-.31em;margin-left:.14em}</style>
+</head><body><script>(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}function t(){if(!location.hash)window.scrollTo(0,0)}t();window.addEventListener('load',t);window.addEventListener('pageshow',t)})();</script>
 <div class="tabs"><nav aria-label="Secciones"><a class="tlg" href="index.html" aria-label="legAR"><img class="ib" src="legar-tab-blanco.png" alt=""><img class="ia" src="legar-tab-azul.png" alt=""></a><a href="gestoria.html">Gestoría</a><a href="marketing.html" aria-current="page">Marketing jurídico</a><a href="novedades.html">Novedades</a></nav></div>
 <header class="hd" style="justify-content:center"><a href="index.html"><img src="legar-logo-blanco.png" alt="legAR" style="width:160px"></a></header>
 <div class="hcw"><span class="chip hc">Hecho para <b>abogados</b>, <b>estudios jurídicos y contables</b></span></div>
@@ -385,7 +386,7 @@ html.js .rev{opacity:1;transform:none}
 <div>Profesionales con trayectoria<small>Para que su experiencia también se vea en internet y llegue a nuevos clientes.</small></div>
 <div>Estudios jurídicos<small>Unipersonales o con varios socios: una imagen coherente en la web, en las redes y en cada documento.</small></div></div></section>
 
-<section style="padding-top:10px"><h2>Cómo <span class="hl">trabajamos</span></h2><p class="sub">Un trabajo integral, paso a paso.</p><ol>
+<section style="padding-top:10px"><h2 class="h2fit" style="white-space:nowrap">El <span class="hl">método</span> <img class="h2lg" src="legar-tab-blanco.png" alt="legAR"></h2><p class="sub">Un trabajo integral, paso a paso.</p><ol>
 <li><b>Diagnóstico</b><span>En una reunión virtual o presencial, revisamos tu web, tus redes y cómo aparecés en Google.</span></li>
 <li><b>Presupuesto a medida</b><span>Según lo que determine la evaluación.</span></li>
 <li><b>Marca e imagen</b><span>Logo, colores y manual de tu estudio.</span></li>
@@ -433,7 +434,7 @@ window.open('https://wa.me/5492215581661?text='+encodeURIComponent(t),'_blank','
 <script>
 (()=>{const nav=document.getElementById('ix');if(!nav)return;const box=nav.firstChild;
 const F=(s,t)=>{const a=document.querySelectorAll(s);for(const e of a){if(!t||e.textContent.indexOf(t)>-1)return e}return null};
-const S=[['Inicio','.hero'],['Servicios','#servicios'],['Casos','#casos'],['Con quién trabajamos',null,'quién'],['Cómo trabajamos',null,'trabajamos'],['Preguntas frecuentes','#faqm'],['Agendá tu consulta','#diag']];
+const S=[['Inicio','.hero'],['Servicios','#servicios'],['Casos','#casos'],['Con quién trabajamos',null,'quién'],['El método legAR',null,'método'],['Preguntas frecuentes','#faqm'],['Agendá tu consulta','#diag']];
 const items=[];S.forEach(r=>{let el=r[1]?document.querySelector(r[1]):null;if(!el&&r[2]){const h=[...document.querySelectorAll('h2')].find(h=>h.textContent.indexOf(r[2])>-1);el=h?h.closest('section'):null}
 if(!el)return;const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ir a '+r[0]);b.innerHTML='<i class="d"></i><span class="l">'+r[0]+'</span>';box.appendChild(b);items.push({el,b,n:r[0]})});
 const mb=document.createElement('button');mb.type='button';mb.className='m';mb.setAttribute('aria-label','Mostrar nombres del índice');mb.setAttribute('aria-expanded','false');mb.innerHTML='<i class="d"></i><span class="l">Índice</span>';box.insertBefore(mb,box.firstChild);
@@ -442,7 +443,7 @@ const setX=v=>{nav.classList.toggle('x',v);mb.setAttribute('aria-expanded',Strin
 mb.addEventListener('click',e=>{e.stopPropagation();setX(!nav.classList.contains('x'))});
 document.addEventListener('click',e=>{if(!nav.contains(e.target))setX(false)});
 const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-items.forEach(i=>i.b.addEventListener('click',()=>{const y=i.n==='Inicio'?0:i.el.getBoundingClientRect().top+scrollY-6;scrollTo({top:y,behavior:rm?'auto':'smooth'});flash(i.b);setX(false)}));
+items.forEach(i=>i.b.addEventListener('click',()=>{const y=i.n==='Inicio'?0:i.el.getBoundingClientRect().top+scrollY-(((document.querySelector('.tabs')||{}).offsetHeight)||0)-12;scrollTo({top:y,behavior:rm?'auto':'smooth'});flash(i.b);setX(false)}));
 let cur=-1,tk=0;const upd=()=>{tk=0;const y=innerHeight*.38;let k=0;items.forEach((i,j)=>{if(i.el.getBoundingClientRect().top<=y)k=j});if(scrollY+innerHeight>=document.documentElement.scrollHeight-4)k=items.length-1;
 if(k!==cur){cur=k;items.forEach((i,j)=>i.b.classList.toggle('a',j===k))}};
 addEventListener('scroll',()=>{if(!tk)tk=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);
@@ -465,4 +466,5 @@ function w(){xs.forEach(function(x){x.style.maxWidth='none';x.dataset.w=x.scroll
 function open(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
 function close(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
 function loop(){setTimeout(function(){open();setTimeout(function(){close();loop()},4200)},1600)}
-var st=false;function go(){if(st)return;st=true;w();loop()}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w()});if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{rootMargin:'0px 0px -25% 0px'});io.observe(el)}else setTimeout(go,300);window.addEventListener('resize',w)})();</script></body></html>
+var st=false;function go(){if(st)return;st=true;w();loop()}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w()});if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{rootMargin:'0px 0px -25% 0px'});io.observe(el)}else setTimeout(go,300);window.addEventListener('resize',w)})();</script><script>(function(){var h=document.querySelector('.h2fit');if(!h)return;function f(){h.style.fontSize='';var w=h.parentNode.clientWidth,n=h.scrollWidth;if(n>w)h.style.fontSize=parseFloat(getComputedStyle(h).fontSize)*w/n*.96+'px'}f();window.addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();</script>
+</body></html>

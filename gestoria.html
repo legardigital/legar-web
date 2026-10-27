@@ -819,7 +819,7 @@ const setX=v=>{nav.classList.toggle('x',v);mb.setAttribute('aria-expanded',Strin
 mb.addEventListener('click',e=>{e.stopPropagation();setX(!nav.classList.contains('x'))});
 document.addEventListener('click',e=>{if(!nav.contains(e.target))setX(false)});
 const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-items.forEach(i=>i.b.addEventListener('click',()=>{const y=i.n==='Inicio'?0:i.el.getBoundingClientRect().top+scrollY-6;scrollTo({top:y,behavior:rm?'auto':'smooth'});flash(i.b);setX(false)}));
+items.forEach(i=>i.b.addEventListener('click',()=>{const y=i.n==='Inicio'?0:i.el.getBoundingClientRect().top+scrollY-(((document.querySelector('.tabs')||{}).offsetHeight)||0)-12;scrollTo({top:y,behavior:rm?'auto':'smooth'});flash(i.b);setX(false)}));
 let cur=-1,tk=0;const upd=()=>{tk=0;const y=innerHeight*.38;let k=0;items.forEach((i,j)=>{if(i.el.getBoundingClientRect().top<=y)k=j});if(scrollY+innerHeight>=document.documentElement.scrollHeight-4)k=items.length-1;
 if(k!==cur){cur=k;items.forEach((i,j)=>i.b.classList.toggle('a',j===k))}};
 addEventListener('scroll',()=>{if(!tk)tk=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);
