@@ -341,8 +341,8 @@ html.js .rev{opacity:1;transform:none}
 <p class="sub" style="margin-top:22px;font-size:.88rem">Resúmenes informativos. Verificá siempre el texto vigente en la fuente oficial.</p>
 <div class="qa" id="preguntas"><span class="kick">TU PREGUNTA</span><h3>¿Qué te gustaría saber?</h3>
 <p>Dejanos tu duda sobre alguna novedad o el tema que querés que expliquemos. Nos ayuda a saber qué sumar a esta sección.</p>
-<form name="preguntas" method="POST" action="/" data-netlify="true" netlify-honeypot="bot" id="qf">
-<input type="hidden" name="form-name" value="preguntas"><p hidden><label>No completar <input name="bot"></label></p>
+<form name="preguntas" method="POST" action="https://formsubmit.co/diligenciaslp@gmail.com" id="qf">
+<p hidden><label>No completar <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
 <label class="ql" for="qp">Tu pregunta</label><textarea id="qp" name="pregunta" rows="4" maxlength="600" required placeholder="Ej.: ¿Cómo impacta la DTR 4/2026 en una sucesión que ya está en trámite?"></textarea>
 <label class="ql" for="qc">Tu mail o WhatsApp <small>(opcional, si querés que te respondamos)</small></label><input id="qc" name="contacto" autocomplete="email">
 <button class="qb" type="submit">Enviar pregunta</button>
@@ -351,9 +351,9 @@ html.js .rev{opacity:1;transform:none}
 <script type="application/json" id="qadata">[]</script>
 <div class="doors"><a class="btn" href="https://wa.me/5492215581661?text=Hola%2C%20vengo%20de%20la%20web%20de%20legAR.%20Quiero%20consultar%20por%20un%20tr%C3%A1mite." target="_blank" rel="noopener">Consultanos tu trámite<small>Te respondemos por WhatsApp</small></a></div></section></main>
 <footer>© legAR · antes Diligencias La Plata<br><a href="index.html">Nosotros</a> · <a href="gestoria.html">Gestoría</a> · <a href="marketing.html">Marketing jurídico</a> · <a href="novedades.html">Novedades</a></footer>
-<script>(function(){var f=document.getElementById('qf');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('.qb'),ok=document.getElementById('qok');b.disabled=true;var d=new FormData(f);
+<script>(function(){var f=document.getElementById('qf');if(!f)return;var EP='https://formsubmit.co/ajax/diligenciaslp@gmail.com';f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('.qb'),ok=document.getElementById('qok');b.disabled=true;var d=new FormData(f);
 function wa(){var t='Hola, vengo de Novedades de legAR. Mi pregunta: '+d.get('pregunta');window.open('https://wa.me/5492215581661?text='+encodeURIComponent(t),'_blank','noopener')}
-fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).then(function(r){if(!r.ok)throw 0;f.reset();ok.textContent='¡Gracias! Recibimos tu pregunta. Cuando la respondamos, va a aparecer acá abajo.';ok.hidden=false}).catch(function(){ok.textContent='No pudimos enviarla desde acá: te abrimos WhatsApp para que nos la mandes.';ok.hidden=false;wa()}).finally(function(){b.disabled=false})})})();</script>
+fetch(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({pregunta:d.get('pregunta'),contacto:d.get('contacto')||'(no dejó contacto)',_honey:d.get('_honey'),_subject:'Nueva pregunta en Novedades · legAR',_template:'table'})}).then(function(r){return r.json()}).then(function(j){if(String(j.success)!=='true')throw 0;f.reset();ok.textContent='¡Gracias! Recibimos tu pregunta. Cuando la respondamos, va a aparecer acá abajo.';ok.hidden=false}).catch(function(){ok.textContent='No pudimos enviarla desde acá: te abrimos WhatsApp para que nos la mandes.';ok.hidden=false;wa()}).finally(function(){b.disabled=false})})})();</script>
 <script>(function(){var L=document.getElementById('ql');if(!L)return;var D=[];try{D=JSON.parse(document.getElementById('qadata').textContent)}catch(e){}
 function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
 if(!D.length){L.innerHTML='<p class="qe">Todavía no hay preguntas respondidas. ¡Dejá la primera!</p>';return}
