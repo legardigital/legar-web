@@ -789,64 +789,7 @@ B.forEach(b=>{let p=null;const e=b.e;
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});els.forEach(e=>io.observe(e))})();
 </script>
 
-<style>#eg{position:fixed;inset:0;z-index:200;touch-action:none;overflow:hidden;font:inherit}#eg .egb{position:absolute;inset:-60px;background:radial-gradient(110% 80% at 50% 38%,#0b3f94 0%,#032a6b 40%,#021e4e 78%)}#eg canvas{position:absolute;inset:0;width:100%;height:100%}#eg .egk{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#e6f0ff;font:600 12px/1 inherit;padding:9px 14px;border-radius:99px;backdrop-filter:blur(6px);cursor:pointer}#eg .egh{position:absolute;left:0;right:0;bottom:max(26px,env(safe-area-inset-bottom));text-align:center;font:600 13px/1.3 system-ui,sans-serif;color:#bfe9d3;opacity:0;transition:opacity .4s}</style>
-<div id="eg" aria-hidden="true"><div class="egb"></div><canvas></canvas><button class="egk" type="button" aria-label="Saltar animación">Saltar</button><div class="egh">🔊 Tocá la pantalla para activar el sonido</div></div>
-<script>
-(()=>{const ov=document.getElementById('eg');if(!ov)return;const kill=()=>{try{ov.remove()}catch(e){}};
-try{if(sessionStorage.getItem('egv')){kill();return}}catch(e){}
-const lg=document.querySelector('img.lg');
-if(!lg||matchMedia('(prefers-reduced-motion:reduce)').matches){kill();return}
-const cv=ov.querySelector('canvas'),c=cv.getContext('2d');if(!c){kill();return}
-const bg=ov.querySelector('.egb'),skip=ov.querySelector('.egk'),hint=ov.querySelector('.egh');
-scrollTo(0,0);const hv=lg.closest('.rev');if(hv){hv.style.transition='none';hv.classList.add('in');void hv.offsetHeight}const R=lg.getBoundingClientRect(),tw=R.width,th=R.height,tx=R.left+tw/2,tb=R.bottom;lg.style.visibility='hidden';
-let vw,vh,dpr;function size(){vw=innerWidth;vh=innerHeight;dpr=Math.min(devicePixelRatio||1,2);cv.width=Math.round(vw*dpr);cv.height=Math.round(vh*dpr)}size();
-const D0=450,G1=1500,H1=2150,M1=3000,REV=3000,END=3800;
-/* audio */
-let ctx=null;try{const AC=window.AudioContext||window.webkitAudioContext;if(AC)ctx=new AC()}catch(e){}
-const evs=['pointerdown','touchend','click','keydown','wheel'];
-const unlock=()=>{if(ctx&&ctx.state!=='running')ctx.resume().then(()=>{hint.style.opacity=0}).catch(()=>{})};
-evs.forEach(e=>addEventListener(e,unlock,{passive:true}));
-setTimeout(()=>{if(ctx&&ctx.state!=='running'&&!ended)hint.style.opacity=1},400);
-function noise(len){const n=Math.floor(ctx.sampleRate*len),b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);for(let j=0;j<n;j++)d[j]=Math.random()*2-1;const s=ctx.createBufferSource();s.buffer=b;return s}
-function sRise(){if(!ctx||ctx.state!=='running')return;const now=ctx.currentTime,L=(G1-D0)/1000,o=ctx.createOscillator(),og=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(70,now);o.frequency.exponentialRampToValueAtTime(520,now+L);const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.setValueAtTime(200,now);lp.frequency.exponentialRampToValueAtTime(2600,now+L);
-og.gain.setValueAtTime(.0001,now);og.gain.exponentialRampToValueAtTime(.22,now+L*.95);og.gain.linearRampToValueAtTime(0,now+L+.02);o.connect(lp);lp.connect(og);og.connect(ctx.destination);o.start(now);o.stop(now+L+.05);
-const s=noise(L+.05),f=ctx.createBiquadFilter(),g=ctx.createGain();f.type='bandpass';f.Q.value=.7;f.frequency.setValueAtTime(300,now);f.frequency.exponentialRampToValueAtTime(3000,now+L);g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(.4,now+L*.95);g.gain.linearRampToValueAtTime(0,now+L+.02);s.connect(f);f.connect(g);g.connect(ctx.destination);s.start(now);s.stop(now+L+.05)}
-function sBoom(){if(!ctx||ctx.state!=='running')return;const now=ctx.currentTime,o=ctx.createOscillator(),og=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(140,now);o.frequency.exponentialRampToValueAtTime(34,now+.55);og.gain.setValueAtTime(.9,now);og.gain.exponentialRampToValueAtTime(.001,now+.7);o.connect(og);og.connect(ctx.destination);o.start(now);o.stop(now+.75);
-const s=noise(.5),f=ctx.createBiquadFilter(),g=ctx.createGain();f.type='lowpass';f.frequency.setValueAtTime(2500,now);f.frequency.exponentialRampToValueAtTime(120,now+.4);g.gain.setValueAtTime(.7,now);g.gain.exponentialRampToValueAtTime(.001,now+.45);s.connect(f);f.connect(g);g.connect(ctx.destination);s.start(now);s.stop(now+.5)}
-function sTap(){if(!ctx||ctx.state!=='running')return;const now=ctx.currentTime,o=ctx.createOscillator(),og=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(110,now);o.frequency.exponentialRampToValueAtTime(55,now+.2);og.gain.setValueAtTime(.45,now);og.gain.exponentialRampToValueAtTime(.001,now+.25);o.connect(og);og.connect(ctx.destination);o.start(now);o.stop(now+.3)}
-/* efectos */
-const I=new Image();let ended=false,raf=0,t0=0,born=false,boomed=false,landed=false,PS=[];
-const CX=()=>vw/2,CY=()=>vh*.46;
-function burst(){const cx=CX(),cy=CY();for(let i=0;i<80;i++){const a=Math.random()*Math.PI*2,v=240+Math.random()*700;PS.push({k:0,x:cx,y:cy,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:.5+Math.random()*.7,col:['#ffffff','#7bf0b4','#36c97a','#a9d2ff'][i%4]})}}
-function ring(tt,delay,col,maxR){const q=(tt-delay)/800;if(q<=0||q>=1)return;const r=maxR*(1-Math.pow(1-q,2.4));c.beginPath();c.arc(CX(),CY(),r,0,7);c.strokeStyle=col.replace('A',(.8*(1-q)).toFixed(3));c.lineWidth=2+9*(1-q);c.stroke()}
-function finish(){if(ended)return;ended=true;cancelAnimationFrame(raf);evs.forEach(e=>removeEventListener(e,unlock));removeEventListener('resize',size);lg.style.visibility='';if(hv)setTimeout(()=>{hv.style.transition=''},60);try{sessionStorage.setItem('egv','1')}catch(e){}
-ov.style.transition='opacity .3s';ov.style.opacity=0;setTimeout(()=>{kill();try{ctx&&ctx.close()}catch(e){}},350)}
-const ob=u=>{const c1=1.5,c3=c1+1;return 1+c3*Math.pow(u-1,3)+c1*Math.pow(u-1,2)},io=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
-let last=0;
-function frame(now){if(ended)return;if(!t0){t0=now;last=now}const t=now-t0,dt=Math.min((now-last)/1000,.05);last=now;
-c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,vw,vh);
-let sh=0;if(t>G1)sh=Math.min(16,vw*.04)*Math.exp(-(t-G1)/140);const dx=(Math.random()-.5)*2*sh,dy=(Math.random()-.5)*2*sh,tr=sh>.4?`translate(${dx}px,${dy}px)`:'';bg.style.transform=tr;cv.style.transform=tr;
-if(t>=D0&&!born){born=true;sRise()}
-if(t>=G1&&!boomed){boomed=true;sBoom();burst()}
-if(t>=M1&&!landed){landed=true;sTap()}
-const bw=Math.min(vw*.84,560),sc0=bw/tw,cx0=CX(),cy0=CY();
-let cx=cx0,cy=cy0,sc=0,rot=0,vis=false;
-if(t<D0){const q=t/D0,r=5+4*Math.sin(t/60);const g=c.createRadialGradient(cx0,cy0,0,cx0,cy0,r*3);g.addColorStop(0,`rgba(255,255,255,${.4+.6*q})`);g.addColorStop(.4,`rgba(150,240,200,${.4*q})`);g.addColorStop(1,'rgba(150,240,200,0)');c.fillStyle=g;c.beginPath();c.arc(cx0,cy0,r*3,0,7);c.fill()}
-else if(t<G1){vis=true;const u=(t-D0)/(G1-D0);sc=Math.max(.004,sc0*ob(Math.pow(u,.85)));rot=-.35*(1-Math.pow(u,.6))}
-else if(t<H1){vis=true;sc=sc0*(1+.012*Math.sin((t-G1)/90))}
-else if(t<M1){vis=true;const v=io((t-H1)/(M1-H1));cx=cx0+(tx-cx0)*v;cy=cy0+((tb-th/2)-cy0)*v;sc=sc0+(1-sc0)*v}
-else{vis=true;cx=tx;cy=tb-th/2;sc=1}
-if(t>=D0&&t<M1){const R=sc*tw*.9,a=t<G1?(t-D0)/(G1-D0):1,g=c.createRadialGradient(cx,cy,0,cx,cy,R);g.addColorStop(0,`rgba(140,230,200,${.30*a})`);g.addColorStop(1,'rgba(140,230,200,0)');c.fillStyle=g;c.fillRect(0,0,vw,vh)}
-if(vis){c.save();c.translate(cx,cy);c.rotate(rot);c.scale(sc,sc);c.drawImage(I,-tw/2,-th/2,tw,th);c.restore()}
-if(t>=G1){const tt=t-G1,R0=Math.max(vw*.7,340);ring(tt,0,'rgba(255,255,255,A)',R0);ring(tt,120,'rgba(123,240,180,A)',R0*.8);
- for(const p of PS){p.l-=dt;if(p.l<=0)continue;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=.985;p.vy=p.vy*.985+200*dt;c.globalAlpha=Math.min(1,p.l*1.6);c.strokeStyle=p.col;c.lineWidth=3;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x-p.vx*.03,p.y-p.vy*.03);c.stroke()}c.globalAlpha=1;
- const fl=Math.exp(-tt/110)*.65;if(fl>.02){c.fillStyle=`rgba(255,255,255,${fl})`;c.fillRect(0,0,vw,vh)}}
-if(t>=REV){lg.style.visibility='';bg.style.opacity=Math.max(0,1-(t-REV)/(END-REV-100))}
-if(t>=END)finish();else raf=requestAnimationFrame(frame)}
-skip.addEventListener('click',e=>{e.stopPropagation();finish()});addEventListener('resize',size);
-I.onload=()=>{raf=requestAnimationFrame(frame)};I.onerror=finish;I.src=lg.currentSrc||lg.src;
-})();
-</script>
+
 <style>
 #ix{position:fixed;left:4px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-start;gap:0;font-family:Figtree,system-ui,sans-serif;opacity:0;pointer-events:none;transition:opacity .4s}
 #ix.on{opacity:1;pointer-events:auto}
