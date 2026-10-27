@@ -886,12 +886,21 @@ const set=n=>b.textContent='+'+n;if(matchMedia('(prefers-reduced-motion:reduce)'
 let done=0;const run=()=>{if(done)return;if(document.getElementById('eg'))return setTimeout(run,200);done=1;const t0=performance.now(),D=1400;set(0);const f=t=>{const k=Math.min(1,(t-t0)/D),v=Math.round(ALIADOS*(1-Math.pow(1-k,3)));set(v);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)};run()})();
 </script>
 
-<script>(function(){var el=document.querySelector('.lgx');if(!el)return;var xs=el.querySelectorAll('.lx');
-if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.classList.add('open');return}
-function w(){xs.forEach(function(x){x.style.maxWidth='none';x.dataset.w=x.scrollWidth;x.style.maxWidth=el.classList.contains('open')?x.dataset.w+'px':'0px'})}
+<script>(function(){var el=document.querySelector('.lgx');if(!el)return;
+var P=[["Lo ","al, en toda ","gentina","Lo legal, en toda Argentina"],["De",""," nunca fue tan fácil","Delegar nunca fue tan fácil"],["L",""," a todo el país, sin moverte","Llegar a todo el país, sin moverte"]];
+var CK='<i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
+var base=parseFloat(getComputedStyle(el).fontSize),k=0,xs=[];
+var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function build(p){el.classList.remove('open');el.style.fontSize='';el.setAttribute('aria-label','legAR: '+p[3]);
+el.innerHTML='<span class="lx">'+p[0]+'</span><b>leg</b>'+(p[1]?'<span class="lx">'+p[1]+'</span>':'')+'<b>AR</b><span class="lx">'+p[2]+'</span>'+CK;
+xs=el.querySelectorAll('.lx');
+xs.forEach(function(x){x.style.maxWidth='none'});var st=el.querySelector('.stp');st.style.maxWidth='1em';
+var avail=el.clientWidth-22,need=el.scrollWidth;var fs=base;if(need>avail){fs=Math.max(base*avail/need,11);el.style.fontSize=fs+'px'}
+xs.forEach(function(x){x.dataset.w=x.scrollWidth;x.style.maxWidth=rm?'none':'0px'});st.style.maxWidth='';if(rm)el.classList.add('open')}
 function open(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
 function close(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
-function loop(){setTimeout(function(){open();setTimeout(function(){close();loop()},4200)},1600)}
-var st=false;function go(){if(st)return;st=true;w();loop()}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w()});setTimeout(go,300);window.addEventListener('resize',w)})();</script>
+function cycle(){build(P[k]);if(rm){setTimeout(function(){k=(k+1)%P.length;cycle()},4000);return}
+setTimeout(function(){open();setTimeout(function(){close();setTimeout(function(){k=(k+1)%P.length;cycle()},1150)},4200)},1400)}
+setTimeout(cycle,300)})();</script>
 </body>
 </html>
