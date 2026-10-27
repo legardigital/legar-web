@@ -338,7 +338,7 @@ footer a{color:#B8C0CE}
 <div class="pn" aria-live="polite">
 <h3 id="pt">Tu presencia en todo el país</h3>
 <p id="px">Cada punto es una capital provincial. Tocá una provincia para conocerla; en Buenos Aires está nuestra base.</p>
-<div class="zx"><div class="pl" id="pl"></div><div class="pl" id="bl"></div><div id="cd" hidden><h4 id="cn"></h4><p id="cx"></p><div id="cv"><video id="rv" class="rv rvp" controls muted loop playsinline preload="none" poster="assets/g-6234c7fd02.jpg" src="assets/g-f1c1216a94.mp4"></video><video id="obv" class="rv rvp" controls muted loop playsinline preload="none" poster="assets/g-a4429a115d.jpg" src="assets/g-4df3a61a59.mp4"></video></div><p id="cs" class="sm" hidden>Video ilustrativo.</p><button class="btn" id="cb" type="button">Consultar por este lugar</button></div></div>
+<div class="zx"><div class="pl" id="pl"></div><div class="pl" id="bl"></div><div id="cd" hidden><h4 id="cn"></h4><p id="cx"></p><div id="cv"><video id="rv" class="rv rvp" controls muted loop playsinline preload="none" poster="assets/g-6234c7fd02.jpg" src="assets/g-f1c1216a94.mp4"></video><video id="gv" class="rv" controls muted loop playsinline preload="none" style="display:none"></video><video id="obv" class="rv rvp" controls muted loop playsinline preload="none" poster="assets/g-a4429a115d.jpg" src="assets/g-4df3a61a59.mp4"></video></div><p id="cs" class="sm" hidden>Video ilustrativo.</p><button class="btn" id="cb" type="button">Consultar por este lugar</button></div></div>
 <button id="bk" type="button">Volver al mapa</button>
 </div>
 <button class="btn go" type="button">Consultanos tu trámite<small>Te respondemos por WhatsApp</small></button>
@@ -519,7 +519,7 @@ var GR_LP={
  reg:{n:'Registros',c:'#36c97a'},
  tri:{n:'Tribunales',c:'#36c97a'},
  org:{n:'Organismos',c:'#36c97a'},
- fac:{n:'Facultad',c:'#36c97a'},
+ fac:{n:'Universidad',c:'#36c97a'},
  ref:{n:'Catedral',c:'#ffffff'}
 };
 var IT_LP=[
@@ -533,10 +533,12 @@ var IT_LP=[
  {id:'arba',n:'ARBA',g:'org',a:7,b:45.5,k:'mod',w:9,d:5.5,h:6,t:'Organismos',x:'Agencia de Recaudación de la provincia de Buenos Aires: impuestos provinciales como el inmobiliario y el automotor.'},
  {id:'ioma',n:'IOMA',g:'org',a:12.5,b:46,k:'mod',w:6,d:5,h:5.6,t:'Organismos',x:'Obra social de la provincia de Buenos Aires para trabajadores del Estado provincial.'},
  {id:'fac',n:'Facultad de Ciencias Jurídicas y Sociales',g:'fac',a:6.6,b:48,k:'cls',w:9,d:6.5,h:4.2,t:'Otro',x:'Facultad de la UNLP donde se cursa la carrera de Abogacía.'},
+ {id:'unlp',n:'Universidad Nacional de La Plata',g:'fac',a:6.7,b:47.3,k:'cls',w:8,d:6,h:5,t:'Otro',v:'assets/lp-unlp.mp4',vp:'assets/lp-unlp.jpg',vo:'v',x:'Presidencia de la Universidad Nacional de La Plata, sobre calle 7 entre 47 y 48.'},
+ {id:'gob',n:'Casa de Gobierno',g:'org',a:5.5,b:52,k:'cls',w:11,d:7,h:5.5,t:'Organismos',v:'assets/lp-casa-gobierno.mp4',vp:'assets/lp-casa-gobierno.jpg',vo:'h',x:'Sede del Poder Ejecutivo de la provincia de Buenos Aires, sobre calle 6 entre 51 y 53, frente a la Plaza San Martín.'},
  {id:'cat',n:'Catedral',g:'ref',a:14.53,b:52,k:'cat',h:11.2,x:'Catedral neogótica de la Inmaculada Concepción, frente a la Plaza Moreno. Es uno de los símbolos de la ciudad. Pronto: fotos y videos de este lugar.'}
 ];
 var GR,IT,byId={};
-var GP=[],view={s:.05,cx:0,cy:0},goal={s:.05,cx:0,cy:0},W=0,H=0,sFit=.05,selG=null,selI=null,rv=$('rv'),ov=$('obv'),mw=null,lbl=null,lbp=null,rg=null,chit=null;
+var GP=[],view={s:.05,cx:0,cy:0},goal={s:.05,cx:0,cy:0},W=0,H=0,sFit=.05,selG=null,selI=null,rv=$('rv'),ov=$('obv'),gv=$('gv'),mw=null,lbl=null,lbp=null,rg=null,chit=null;
 
 /* ---------- mapa plano ---------- */
 function rc(path,a1,a2,b1,b2,ins){var x=(b1-52)*P+ins,y=(a1-13)*P+ins,w=(b2-b1)*P-2*ins,h=(a2-a1)*P-2*ins;return path+'M'+x+' '+y+'h'+w+'v'+h+'h'+(-w)+'z'}
@@ -625,11 +627,13 @@ function listBtns(){var bl=$('bl');bl.innerHTML='';if(!selG)return;
  IT.filter(function(i){return i.g===selG}).forEach(function(it){var b=document.createElement('button');b.type='button';b.textContent=it.n;b.style.setProperty('--c',GR[it.g].c);
   b.setAttribute('aria-pressed',String(selI===it.id));b.onclick=function(){selItem(it.id)};bl.appendChild(b)})}
 function card(){var cd=$('cd'),it=selI?byId[selI]:null;
- if(!it){cd.hidden=true;rv.pause();ov.pause();return}
+ if(!it){cd.hidden=true;rv.pause();ov.pause();gv.pause();return}
  cd.hidden=false;$('cn').textContent=it.n;$('cx').textContent=it.x;
  var cb=$('cb'),cvv=$('cv'),cs=$('cs');
- var isLP=(CITY===CT.lp),vr=(it.id==='rpi'&&isLP)?rv:(it.id==='obe'?ov:null);
- [rv,ov].forEach(function(x){if(x!==vr){x.style.display='none';x.pause()}});
+ var isLP=(CITY===CT.lp),vr=it.v?gv:((it.id==='rpi'&&isLP)?rv:(it.id==='obe'?ov:null));
+ if(it.v){if(gv.getAttribute('src')!==it.v){gv.setAttribute('src',it.v);gv.setAttribute('poster',it.vp||'')}gv.classList.toggle('rvp',it.vo==='v')}
+ cs.textContent=it.v?'Video grabado por legAR.':'Video ilustrativo.';
+ [rv,ov,gv].forEach(function(x){if(x!==vr){x.style.display='none';x.pause()}});
  if(vr){vr.style.display='block';cs.hidden=false;var pr=vr.play();if(pr&&pr.catch)pr.catch(function(){})}else cs.hidden=true
  cb.hidden=(it.g==='ref')}
 function ovl(){var it=selI?byId[selI]:null;if(window.setOv)window.setOv(it?it.n:'',it?it.x:'')}
@@ -678,7 +682,7 @@ function enter(key){
  flyOverview();view.s=goal.s*1.5;view.cx=goal.cx;view.cy=goal.cy;
  if(!looping){looping=true;requestAnimationFrame(frame)}
 }
-function leave(){active=false;rv.pause();ov.pause()}
+function leave(){active=false;rv.pause();gv.pause();ov.pause()}
 
 /* ---------- CABA ---------- */
 var K1=23975,K2=29057,LA0=-34.6159,LO0=-58.4315;
