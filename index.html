@@ -382,6 +382,8 @@ html.js .rev{opacity:1;transform:none}
 <div><i>4</i><b>Presencial y digital</b><span>Tu trámite y la imagen de tu estudio, en un mismo lugar.</span></div>
 </div></section>
 
+<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Delegar nunca fue tan fácil" data-pre="De" data-post="&nbsp;nunca fue tan fácil"></div></div>
+
 <section style="padding-top:10px"><h2>Nuestras <span class="hl">áreas</span></h2>
 <div class="ar2">
 <a href="gestoria.html"><b>Gestoría</b><span>Trámites en registros, tribunales y organismos, y oficios Ley 22.172.</span><br><em>Ir a Gestoría →</em></a>
@@ -401,4 +403,16 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 <script>(function(){var bs=document.querySelectorAll('.dfit');if(!bs.length)return;function f(){bs.forEach(function(b){b.style.fontSize='';var w=b.parentNode.clientWidth,n=b.scrollWidth;if(n>w)b.style.fontSize=Math.max(parseFloat(getComputedStyle(b).fontSize)*w/n*.97,11)+'px'})}f();window.addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();</script>
 <script>(function(){var h=document.querySelector('.h2fit');if(!h)return;function f(){h.style.fontSize='';var w=h.parentNode.clientWidth,n=h.scrollWidth;if(n>w)h.style.fontSize=parseFloat(getComputedStyle(h).fontSize)*w/n*.96+'px'}f();window.addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();</script>
 <script>(function(){var e=document.querySelector('.sello');if(!e||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;e.classList.add('pre');var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){setTimeout(function(){e.classList.remove('pre');e.classList.add('go')},120);io.disconnect()}},{rootMargin:'0px 0px -15% 0px'});io.observe(e)})();</script>
+<script>(function(){var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var CK='<i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
+document.querySelectorAll('.lgx[data-pre]').forEach(function(el,n){var pre=el.dataset.pre,mid=el.dataset.mid||'',post=el.dataset.post;
+el.innerHTML='<span class="lx">'+pre+'</span><b>leg</b>'+(mid?'<span class="lx">'+mid+'</span>':'')+'<b>AR</b><span class="lx">'+post+'</span>'+CK;
+var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp'),base=parseFloat(getComputedStyle(el).fontSize);
+function fit(){el.style.fontSize='';xs.forEach(function(x){x.style.maxWidth='none'});st.style.maxWidth='1em';var av=el.clientWidth-22,nd=el.scrollWidth;if(nd>av)el.style.fontSize=Math.max(base*av/nd,11)+'px';
+xs.forEach(function(x){x.dataset.w=x.scrollWidth;x.style.maxWidth=(rm||el.classList.contains('open'))?x.dataset.w+'px':'0px'});st.style.maxWidth=''}
+fit();if(rm){el.classList.add('open');return}
+function op(){el.classList.add('open');xs.forEach(function(x){x.style.maxWidth=x.dataset.w+'px'})}
+function cl(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
+function loop(){setTimeout(function(){op();setTimeout(function(){cl();loop()},4200)},1600)}
+setTimeout(loop,300+n*700);window.addEventListener('resize',fit)})})();</script>
 </body></html>
