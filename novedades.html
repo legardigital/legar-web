@@ -314,6 +314,18 @@ html.js .rev{opacity:1;transform:none}
 .qb:disabled{opacity:.6;cursor:wait}
 .qok{margin:12px 0 0;color:#48BF71;font-weight:600;text-align:center}
 </style>
+<style>
+.qh{margin-top:22px;padding-top:16px;border-top:1px solid rgba(156,164,180,.22)}
+.qh h4{margin:0 0 10px;font:700 .95rem Montserrat,system-ui,sans-serif;color:#e9f0f8}
+.qi{padding:10px 0;border-bottom:1px solid rgba(156,164,180,.14)}
+.qi:last-child{border-bottom:0}
+.qq{margin:0;color:#fff;font-size:.95rem}
+.qr{margin:4px 0 0 14px;color:#9CA4B4;font-size:.9rem;position:relative}
+.qr:before{content:"";position:absolute;left:-12px;top:.25em;width:7px;height:8px;border-left:1.5px solid #48BF71;border-bottom:1.5px solid #48BF71}
+.qr small{color:#7d879a;margin-left:6px;font-size:.78rem}
+.qe{margin:0;color:#9CA4B4;font-size:.9rem}
+.qm{margin-top:10px;background:none;border:0;color:#48BF71;font:600 .9rem "Source Sans 3",sans-serif;cursor:pointer;padding:0}
+</style>
 </head><body><script>(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}function t(){if(!location.hash)window.scrollTo(0,0)}t();window.addEventListener('load',t);window.addEventListener('pageshow',t)})();</script>
 <div class="tabs"><nav aria-label="Secciones"><a class="tlg" href="index.html" aria-label="legAR"><img class="ib" src="legar-tab-blanco.png" alt=""><img class="ia" src="legar-tab-azul.png" alt=""></a><a href="gestoria.html">Gestoría</a><a href="marketing.html">Marketing jurídico</a><a href="novedades.html" aria-current="page">Novedades</a></nav></div>
 <header class="hd" style="justify-content:center"><a href="index.html"><img src="legar-logo-blanco.png" alt="legAR" style="width:160px"></a></header>
@@ -331,14 +343,20 @@ html.js .rev{opacity:1;transform:none}
 <p>Dejanos tu duda sobre alguna novedad o el tema que querés que expliquemos. Nos ayuda a saber qué sumar a esta sección.</p>
 <form name="preguntas" method="POST" action="/" data-netlify="true" netlify-honeypot="bot" id="qf">
 <input type="hidden" name="form-name" value="preguntas"><p hidden><label>No completar <input name="bot"></label></p>
-<label class="ql" for="qt">Tema</label><select id="qt" name="tema"><option>Sobre una novedad publicada</option><option>Un tema que quiero que expliquen</option><option>Valores JUS / UMA</option><option>Otro</option></select>
 <label class="ql" for="qp">Tu pregunta</label><textarea id="qp" name="pregunta" rows="4" maxlength="600" required placeholder="Ej.: ¿Cómo impacta la DTR 4/2026 en una sucesión que ya está en trámite?"></textarea>
 <label class="ql" for="qc">Tu mail o WhatsApp <small>(opcional, si querés que te respondamos)</small></label><input id="qc" name="contacto" autocomplete="email">
 <button class="qb" type="submit">Enviar pregunta</button>
-<p class="qok" id="qok" role="status" hidden>¡Gracias! Recibimos tu pregunta.</p></form></div>
+<p class="qok" id="qok" role="status" hidden>¡Gracias! Recibimos tu pregunta.</p></form>
+<div class="qh"><h4>Últimas preguntas</h4><div id="ql"></div><button class="qm" id="qm" type="button" hidden>Ver más preguntas</button></div></div>
+<script type="application/json" id="qadata">[]</script>
 <div class="doors"><a class="btn" href="https://wa.me/5492215581661?text=Hola%2C%20vengo%20de%20la%20web%20de%20legAR.%20Quiero%20consultar%20por%20un%20tr%C3%A1mite." target="_blank" rel="noopener">Consultanos tu trámite<small>Te respondemos por WhatsApp</small></a></div></section></main>
 <footer>© legAR · antes Diligencias La Plata<br><a href="index.html">Nosotros</a> · <a href="gestoria.html">Gestoría</a> · <a href="marketing.html">Marketing jurídico</a> · <a href="novedades.html">Novedades</a></footer>
 <script>(function(){var f=document.getElementById('qf');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('.qb'),ok=document.getElementById('qok');b.disabled=true;var d=new FormData(f);
-function wa(){var t='Hola, vengo de Novedades de legAR. Tema: '+d.get('tema')+'. Pregunta: '+d.get('pregunta');window.open('https://wa.me/5492215581661?text='+encodeURIComponent(t),'_blank','noopener')}
-fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).then(function(r){if(!r.ok)throw 0;f.reset();ok.textContent='¡Gracias! Recibimos tu pregunta.';ok.hidden=false}).catch(function(){ok.textContent='No pudimos enviarla desde acá: te abrimos WhatsApp para que nos la mandes.';ok.hidden=false;wa()}).finally(function(){b.disabled=false})})})();</script>
+function wa(){var t='Hola, vengo de Novedades de legAR. Mi pregunta: '+d.get('pregunta');window.open('https://wa.me/5492215581661?text='+encodeURIComponent(t),'_blank','noopener')}
+fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).then(function(r){if(!r.ok)throw 0;f.reset();ok.textContent='¡Gracias! Recibimos tu pregunta. Cuando la respondamos, va a aparecer acá abajo.';ok.hidden=false}).catch(function(){ok.textContent='No pudimos enviarla desde acá: te abrimos WhatsApp para que nos la mandes.';ok.hidden=false;wa()}).finally(function(){b.disabled=false})})})();</script>
+<script>(function(){var L=document.getElementById('ql');if(!L)return;var D=[];try{D=JSON.parse(document.getElementById('qadata').textContent)}catch(e){}
+function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
+if(!D.length){L.innerHTML='<p class="qe">Todavía no hay preguntas respondidas. ¡Dejá la primera!</p>';return}
+var N=4,m=document.getElementById('qm');function r(k){L.innerHTML=D.slice(0,k).map(function(x){return '<div class="qi"><p class="qq">'+esc(x.q)+'</p><p class="qr">'+esc(x.a)+(x.f?'<small>'+esc(x.f)+'</small>':'')+'</p></div>'}).join('');m.hidden=k>=D.length}
+r(N);m.addEventListener('click',function(){r(D.length)})})();</script>
 </body></html>
