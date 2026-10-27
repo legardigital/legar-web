@@ -289,6 +289,7 @@ footer a{color:#B8C0CE}
 .tabs nav{align-items:center}.tabs a{display:inline-flex;align-items:center;line-height:1.2}.tabs a.tlg{align-self:stretch}.tabs a.tlg img{height:14px;width:auto;display:block}.tabs a.tlg .ia{display:none}.tabs a.tlg[aria-current=page] .ib{display:none}.tabs a.tlg[aria-current=page] .ia{display:block}
 .lgx .stp{display:inline-block;width:.95em;max-width:0;height:.95em;margin-left:0;overflow:visible;vertical-align:-.08em;opacity:0;transform:scale(2.4) rotate(-14deg);transition:opacity .25s ease,transform .35s cubic-bezier(.3,1.6,.5,1)}.lgx .stp svg{width:100%;height:100%;display:block}.lgx.open .stp{opacity:1;transform:none;max-width:1.2em;margin-left:.16em;transition-delay:.95s}@media (prefers-reduced-motion:reduce){.lgx .stp{opacity:1;transform:none;transition:none}}
 </style>
+<style>.lgx>*{flex-shrink:0}.mqw>.c{width:100%;min-width:0;box-sizing:border-box}.lgx{width:100%;min-width:0;box-sizing:border-box}.lgx{letter-spacing:0!important}.lgx .lx{padding-right:.02em}</style>
 </head>
 <body>
 <script>(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}function t(){if(!location.hash)window.scrollTo(0,0)}t();window.addEventListener('load',t);window.addEventListener('pageshow',t)})();</script>
@@ -301,7 +302,7 @@ footer a{color:#B8C0CE}
 <h1>El nexo <span class="hl">presencial</span> de profesionales de todo el país.</h1>
 <div class="doors"><button class="btn go" type="button">Gestionar un trámite<small>Te respondemos por WhatsApp</small></button></div>
 <ul class="tl"><li>Vamos en persona</li><li>Cobertura en todo el país</li><li>Seguimiento real de tu trámite</li></ul>
-<div class="mqw" style="margin:14px 0 0;border:0;background:none;padding:6px 0"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Lo legal, en toda Argentina" data-pre="Lo&nbsp;" data-mid="al, en toda&nbsp;" data-post="gentina"></div></div>
+<div class="mqw" style="margin:14px 0 0;border:0;background:none;padding:6px 0"><div class="lgx" style="font-size:clamp(.9rem,4.1vw,1.3rem)" role="img" aria-label="legAR: Lo legal, en toda Argentina" data-pre="Lo&nbsp;" data-mid="al, en toda&nbsp;" data-post="gentina"></div></div>
 <button class="lk go" type="button" data-p="1">¿Sos particular? También te ayudamos</button>
 <div class="bub" id="bub" role="group" aria-label="Ventajas y trámites, burbujas interactivas">
 <button class="bb" type="button" data-t="Registros"><span class="orb" style="--a:20deg"><b></b></span><em>Registros</em></button>
@@ -329,7 +330,7 @@ footer a{color:#B8C0CE}
 </div>
 <button class="btn go" type="button">Consultanos tu trámite<small>Te respondemos por WhatsApp</small></button>
 </div></section>
-<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="c"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Delegar nunca fue tan fácil" data-pre="De" data-post="&nbsp;nunca fue tan fácil"></div></div></div>
+<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="c"><div class="lgx" style="font-size:clamp(.9rem,4.1vw,1.3rem)" role="img" aria-label="legAR: Delegar nunca fue tan fácil" data-pre="De" data-post="&nbsp;nunca fue tan fácil"></div></div></div>
 
 
 <div class="gb b" aria-hidden="true" style="margin:0 -20px 34px"></div>
@@ -387,7 +388,7 @@ footer a{color:#B8C0CE}
 <button class="btn" type="submit">Quiero sumarme<small>Te contactamos por WhatsApp</small></button>
 </form>
 </div></section>
-<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0 10px 34px"><div class="c"><div class="lgx" style="font-size:clamp(.92rem,4.3vw,1.45rem)" role="img" aria-label="legAR: Llegar a todo el país, sin moverte" data-pre="L" data-post="&nbsp;a todo el país, sin moverte"></div></div></div>
+<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="c"><div class="lgx" style="font-size:clamp(.9rem,4.1vw,1.3rem)" role="img" aria-label="legAR: Llegar a todo el país, sin moverte" data-pre="L" data-post="&nbsp;a todo el país, sin moverte"></div></div></div>
 
 <div class="gb b" aria-hidden="true"></div>
 <section id="rese"><div class="c">
@@ -838,8 +839,8 @@ let done=0;const run=()=>{if(done)return;if(document.getElementById('eg'))return
 var CK='<i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
 document.querySelectorAll('.lgx').forEach(function(el){
 if(el.dataset.pre!==undefined){var mid=el.dataset.mid||'';el.innerHTML='<span class="lx">'+el.dataset.pre+'</span><b>leg</b>'+(mid?'<span class="lx">'+mid+'</span>':'')+'<b>AR</b><span class="lx">'+el.dataset.post+'</span>'+CK}
-var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp');el.style.fontSize='';var base=parseFloat(getComputedStyle(el).fontSize),fs0=el.getAttribute('style')||'';
-function fit(){el.style.fontSize='';xs.forEach(function(x){x.style.maxWidth='none'});if(st)st.style.maxWidth='1em';var av=el.clientWidth-22,nd=el.scrollWidth;if(nd>av)el.style.fontSize=Math.max(parseFloat(getComputedStyle(el).fontSize)*av/nd,11)+'px';
+var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp'),fs0=el.style.fontSize;var base=parseFloat(getComputedStyle(el).fontSize),fs0=el.getAttribute('style')||'';
+function fit(){el.style.fontSize=fs0;xs.forEach(function(x){x.style.maxWidth='none'});if(st)st.style.maxWidth='1em';var cs=getComputedStyle(el),pl=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight),av=(el.clientWidth-pl)*.92-12,nd=0;[].forEach.call(el.children,function(c){nd+=c.getBoundingClientRect().width});if(nd>av)el.style.fontSize=Math.max(parseFloat(getComputedStyle(el).fontSize)*av/nd,11)+'px';
 xs.forEach(function(x){x.dataset.w=x.scrollWidth+3;x.style.maxWidth=(rm||el.classList.contains('open'))?x.dataset.w+'px':'0px'});if(st)st.style.maxWidth=''}
 fit();if(document.fonts){if(document.fonts.ready)document.fonts.ready.then(fit);if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',fit)}window.addEventListener('resize',fit);
 if(rm){el.classList.add('open');return}

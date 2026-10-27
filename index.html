@@ -341,6 +341,7 @@ html.js .rev{opacity:1;transform:none}
 .sello.go{opacity:1;transform:rotate(-10deg);transition:opacity .25s ease,transform .45s cubic-bezier(.3,1.5,.5,1)}
 @media (prefers-reduced-motion: reduce){.sello.pre{opacity:1;transform:rotate(-10deg)}}
 </style>
+<style>.lgx>*{flex-shrink:0}.mqw>.c{width:100%;min-width:0;box-sizing:border-box}.lgx{width:100%;min-width:0;box-sizing:border-box}.lgx{letter-spacing:0!important}.lgx .lx{padding-right:.02em}</style>
 </head><body><script>(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}function t(){if(!location.hash)window.scrollTo(0,0)}t();window.addEventListener('load',t);window.addEventListener('pageshow',t)})();</script>
 <div class="tabs"><nav aria-label="Secciones"><a class="tlg" href="index.html" aria-current="page" aria-label="legAR"><img class="ib" src="legar-tab-blanco.png" alt=""><img class="ia" src="legar-tab-azul.png" alt=""></a><a href="gestoria.html">Gestoría</a><a href="marketing.html">Marketing jurídico</a><a href="novedades.html">Novedades</a></nav></div>
 <header class="hd" style="justify-content:center"><a href="index.html"><img src="legar-logo-blanco.png" alt="legAR" style="width:160px"></a></header>
@@ -348,7 +349,7 @@ html.js .rev{opacity:1;transform:none}
 
 <main class="c">
 <section class="hero" style="padding-top:6px">
-<div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem);margin-top:14px" role="img" aria-label="legAR: Lo legal, en toda Argentina"><span class="lx">Lo&nbsp;</span><b>leg</b><span class="lx">al, en toda&nbsp;</span><b>AR</b><span class="lx">gentina</span><i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i></div>
+<div class="lgx" style="font-size:clamp(.9rem,4.1vw,1.3rem);margin-top:14px" role="img" aria-label="legAR: Lo legal, en toda Argentina"><span class="lx">Lo&nbsp;</span><b>leg</b><span class="lx">al, en toda&nbsp;</span><b>AR</b><span class="lx">gentina</span><i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i></div>
 <p>La herramienta presencial y digital del abogado argentino.</p></section>
 
 <section style="padding-top:10px"><h2>Nuestra <span class="hl">historia</span></h2><p class="sub">Empezamos como Diligencias La Plata. Crecimos y hoy somos legAR.</p>
@@ -382,7 +383,7 @@ html.js .rev{opacity:1;transform:none}
 <div><i>4</i><b>Presencial y digital</b><span>Tu trámite y la imagen de tu estudio, en un mismo lugar.</span></div>
 </div></section>
 
-<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="lgx" style="font-size:clamp(1.05rem,5.2vw,1.7rem)" role="img" aria-label="legAR: Delegar nunca fue tan fácil" data-pre="De" data-post="&nbsp;nunca fue tan fácil"></div></div>
+<div class="mqw" style="margin:6px 0 0;border:0;background:none;padding:10px 0"><div class="lgx" style="font-size:clamp(.9rem,4.1vw,1.3rem)" role="img" aria-label="legAR: Delegar nunca fue tan fácil" data-pre="De" data-post="&nbsp;nunca fue tan fácil"></div></div>
 
 <section style="padding-top:10px"><h2>Nuestras <span class="hl">áreas</span></h2>
 <div class="ar2">
@@ -402,8 +403,8 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 var CK='<i class="stp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#48BF71" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
 document.querySelectorAll('.lgx').forEach(function(el){
 if(el.dataset.pre!==undefined){var mid=el.dataset.mid||'';el.innerHTML='<span class="lx">'+el.dataset.pre+'</span><b>leg</b>'+(mid?'<span class="lx">'+mid+'</span>':'')+'<b>AR</b><span class="lx">'+el.dataset.post+'</span>'+CK}
-var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp');el.style.fontSize='';var base=parseFloat(getComputedStyle(el).fontSize),fs0=el.getAttribute('style')||'';
-function fit(){el.style.fontSize='';xs.forEach(function(x){x.style.maxWidth='none'});if(st)st.style.maxWidth='1em';var av=el.clientWidth-22,nd=el.scrollWidth;if(nd>av)el.style.fontSize=Math.max(parseFloat(getComputedStyle(el).fontSize)*av/nd,11)+'px';
+var xs=el.querySelectorAll('.lx'),st=el.querySelector('.stp'),fs0=el.style.fontSize;var base=parseFloat(getComputedStyle(el).fontSize),fs0=el.getAttribute('style')||'';
+function fit(){el.style.fontSize=fs0;xs.forEach(function(x){x.style.maxWidth='none'});if(st)st.style.maxWidth='1em';var cs=getComputedStyle(el),pl=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight),av=(el.clientWidth-pl)*.92-12,nd=0;[].forEach.call(el.children,function(c){nd+=c.getBoundingClientRect().width});if(nd>av)el.style.fontSize=Math.max(parseFloat(getComputedStyle(el).fontSize)*av/nd,11)+'px';
 xs.forEach(function(x){x.dataset.w=x.scrollWidth+3;x.style.maxWidth=(rm||el.classList.contains('open'))?x.dataset.w+'px':'0px'});if(st)st.style.maxWidth=''}
 fit();if(document.fonts){if(document.fonts.ready)document.fonts.ready.then(fit);if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',fit)}window.addEventListener('resize',fit);
 if(rm){el.classList.add('open');return}
