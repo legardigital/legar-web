@@ -126,3 +126,11 @@ html.lgc-on input,html.lgc-on textarea,html.lgc-on select,html.lgc-on [contented
   html body .rf,html body .sgt .tk,html body .faq details,html body #faqm details,html body .dic,html body .tl2,html body .ct .l,html body form{max-width:640px;margin-left:auto;margin-right:auto}
   html body .sub{max-width:38em}
 }
+
+/* "ver más" (novedades anteriores, más preguntas) */
+.vermas{display:block;margin:14px auto 0;background:none;border:1.5px solid rgba(184,192,206,.35);color:#F3F6FB;border-radius:99px;padding:.6rem 1.2rem;font:700 .9rem "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.vermas:hover{border-color:#4DA36C;color:#8FCBA4}
+.vermas:focus-visible{outline:3px solid #8FCBA4;outline-offset:2px}
+.nvmore{display:contents}.nvmore[hidden]{display:none!important}
+.fqmore[hidden]{display:none!important}
+.cqh{font:800 1.25rem Montserrat,system-ui,sans-serif;margin:30px 0 6px;color:#F3F6FB}

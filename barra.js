@@ -117,3 +117,11 @@ d.addEventListener('click',function(e){
   setTimeout(function(){a.dataset.lgcGo='1';a.click();delete a.dataset.lgcGo},w);
 },true);
 })();
+
+/* "ver más": muestra lo que estaba guardado */
+(function(){
+[].slice.call(document.querySelectorAll('.vermas')).forEach(function(b){
+  var box=document.getElementById(b.getAttribute('aria-controls'));if(!box)return;
+  b.addEventListener('click',function(){var o=box.hidden;box.hidden=!o;b.setAttribute('aria-expanded',o);b.textContent=o?b.dataset.less:b.dataset.more;if(!o)b.scrollIntoView({block:'center',behavior:'smooth'})});
+});
+})();
