@@ -99,3 +99,30 @@ html.lgc-on input,html.lgc-on textarea,html.lgc-on select,html.lgc-on [contented
 .lgcur.lgc-d .lgc-dot{transform:scale(.6)}
 .lgcur.lgc-gone .lgc-egg{opacity:0!important;transition:none}
 .lgc-fly{position:fixed;left:0;top:0;width:72px;height:47px;margin:-26px 0 0 -36px;z-index:2147483001;pointer-events:none;perspective:260px}
+
+/* ===== optimización celular y escritorio ===== */
+/* celular: más aire a los costados, menos espacio muerto entre secciones */
+@media (max-width:600px){
+  html body .c{padding-left:max(18px,env(safe-area-inset-left,0px))!important;padding-right:max(18px,env(safe-area-inset-right,0px))!important}
+  html body section:not(.hero){padding-top:30px!important;padding-bottom:10px!important}
+  html body .gb{height:34px;margin-top:18px}
+  html body hr.ds{margin:6px auto}
+  html body .sub{margin-bottom:18px}
+  html body details{margin-bottom:8px}
+  html body .sv2{gap:8px!important}
+  html body details.cat summary{padding:12px 14px}
+  html body .ad,html body .mj,html body .bn,html body ol{gap:8px}
+  html body .bub{height:min(92vw,360px)}
+}
+/* escritorio: columna más ancha y tarjetas en dos columnas */
+@media (min-width:960px){
+  html body .c{max-width:860px}
+  html body .sv2{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;align-items:start}
+  html body .sv2 details.cat{margin:0}
+  html body .sv2 details.cat[open]{grid-column:1/-1}
+  html body .ad,html body .mj,html body .qhg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  html body .ad>*,html body .mj>*{min-width:0}
+  html body .jbg{grid-template-columns:repeat(3,minmax(0,1fr))}
+  html body .rf,html body .sgt .tk,html body .faq details,html body #faqm details,html body .dic,html body .tl2,html body .ct .l,html body form{max-width:640px;margin-left:auto;margin-right:auto}
+  html body .sub{max-width:38em}
+}
