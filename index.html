@@ -423,5 +423,5 @@ var t;function op(){el.classList.add('open');xs.forEach(function(x){x.dataset.w=
 function cl(){el.classList.remove('open');xs.forEach(function(x){x.style.maxWidth='0px'})}
 if(!('IntersectionObserver' in window)){setTimeout(op,900);return}
 new IntersectionObserver(function(es){es.forEach(function(e){clearTimeout(t);if(e.isIntersecting)t=setTimeout(op,900);else cl()})},{rootMargin:'0px 0px -20% 0px'}).observe(el)})})();</script>
-<script src="barra.js"></script>
+<script>window.LBIDX=[["Inicio", "main > section"], ["Nuestra historia", "t:nuestra historia"], ["Identidad legAR", "#dic"], ["Conocé a Nicolás Poblete", "t:conocé a"], ["Nuestro sello", "t:nuestro sello"], ["Áreas", "t:nuestras áreas"]];</script><script src="barra.js"></script>
 </body></html>

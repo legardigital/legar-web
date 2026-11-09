@@ -34,6 +34,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lbmn ol a{display:flex;align-items:baseline;gap:14px;text-decoration:none;color:#F3F6FB;font:800 clamp(1.45rem,7vw,2.2rem)/1.15 Montserrat,system-ui,sans-serif;letter-spacing:-.03em;padding:2px 0}
 .lbmn ol a small{font:600 .72rem "Source Sans 3",system-ui,sans-serif;letter-spacing:.06em;color:#9CA4B4;width:22px;flex:none}
 .lbmn ol a:hover,.lbmn ol a.on{color:#8FCBA4}
+.lbmn ol a .lbflag{width:.95em;height:.62em;flex:none;align-self:center;border-radius:3px;box-shadow:0 2px 8px rgba(0,0,0,.35);margin-left:-.2em}
 .lbpg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
 .lbpg a{color:#F3F6FB;text-decoration:none;border:1.5px solid rgba(184,192,206,.3);border-radius:99px;padding:.5rem .95rem;font:700 .9rem Montserrat,system-ui,sans-serif}
 .lbpg a[aria-current=page]{border-color:#4DA36C;color:#8FCBA4}

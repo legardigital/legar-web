@@ -23,13 +23,14 @@ if(!cfg){ /* sin lista propia: usa los títulos de la página */
 }
 var ix=$('#lbix'),items=[];
 cfg.forEach(function(r,i){
-  var el=r[2]?(r[2].closest('section')||r[2]):find(r[1]);
+  var el=(r[2]&&r[2].nodeType)?(r[2].closest('section')||r[2]):find(r[1]);
   if(!el||items.some(function(it){return it.el===el}))return;
   if(!el.id)el.id='s'+(i+1);
   var li=doc.createElement('li'),a=doc.createElement('a');
   a.href=i===0?'#':'#'+el.id;
   a.innerHTML='<small>'+String(items.length+1).padStart(2,'0')+'</small>';
   a.appendChild(doc.createTextNode(r[0]));
+  if(r[2]==='ar')a.insertAdjacentHTML('beforeend','<svg class="lbflag" viewBox="0 0 28 18" aria-hidden="true"><rect width="28" height="18" rx="2.5" fill="#74ACDF"/><rect y="6" width="28" height="6" fill="#fff"/><circle cx="14" cy="9" r="2.9" fill="none" stroke="#F6B40E" stroke-width="1.3" stroke-dasharray=".7 .62"/><circle cx="14" cy="9" r="1.75" fill="#F6B40E"/></svg>');
   if(i===0)a.addEventListener('click',function(e){e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
   li.appendChild(a);if(ix)ix.appendChild(li);items.push({el:el,a:a});
 });
