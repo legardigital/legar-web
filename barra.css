@@ -156,7 +156,7 @@ html body section.bnd-green+section.bnd-tail{margin-top:0}
 .bnd-paper .dic .da{border-bottom-color:#DCE3EC!important}.bnd-paper .dn,.bnd-paper .dn small,.bnd-paper .dw span{color:#5A6478!important}
 .bnd-paper .adc .og{color:#5A6478!important}
 .bnd-paper .adc a,.bnd-paper .ln a{color:#011F4F!important}
-.bnd-paper img.h2lg,.bnd-paper img.lglo,.bnd-paper .dfl{filter:brightness(0) saturate(100%) invert(9%) sepia(60%) saturate(4000%) hue-rotate(210deg)}
+.bnd-paper img.h2lg,.bnd-paper img.lglo,.bnd-paper .dfl{filter:none!important}
 .bnd-paper .btn small,.bnd-paper .btn span{color:inherit!important}
 .bnd-paper button,.bnd-paper .vermas{color:#011F4F;border-color:#B8C4D4}
 .bnd-paper [class*="ad"] [class*="vl"],.bnd-paper .adc .big,.bnd-paper .adc .num{color:#1F7F45!important}
@@ -191,3 +191,37 @@ html.lg-rvon .lg-rv.lg-in{opacity:1;transform:none}
 .bnd-paper .vj a,.bnd-paper a.more{color:#011F4F!important;text-decoration-color:#4DA36C!important}
 .bnd-paper details summary,.bnd-paper details p,.bnd-paper details span{color:#011F4F!important}
 .bnd-paper details .vj span,.bnd-paper details .vj small{color:#3F4B63!important}
+
+/* solapa legAR con el logo */
+.lbtabs a.lbtlg{display:inline-flex;align-items:center;padding-top:.32rem;padding-bottom:.32rem}
+.lbtabs a.lbtlg img{height:13px;width:auto;display:block}
+.lbtabs a.lbtlg .n{display:none}
+.lbtabs a.lbtlg[aria-current=page] .w{display:none}.lbtabs a.lbtlg[aria-current=page] .n{display:block}
+
+/* índice abierto: la barra con "Cerrar" queda siempre arriba */
+.lbopen .lb{position:fixed!important;left:0;right:0;top:env(safe-area-inset-top,0px)}
+.lbmn{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.lbclose{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:6px 0 22px;padding:.85rem 1rem;border-radius:14px;border:1.5px solid rgba(233,240,248,.4);background:rgba(255,255,255,.06);color:#F3F6FB;font:700 1rem Montserrat,system-ui,sans-serif;cursor:pointer}
+.lbclose svg{width:18px;height:18px}
+
+/* secciones unidas: sin cortes ni líneas sueltas entre una y otra */
+html body .gb,html body hr.ds{display:none!important}
+html body section.bnd-paper,html body section.bnd-green,html body section.bnd-deep{margin-top:34px;margin-bottom:0}
+.bnd-deep{background:transparent!important;box-shadow:none!important;clip-path:none!important}
+.bnd-deep:before{content:"";position:absolute;inset:0 -100vmax;z-index:-1;background:linear-gradient(180deg,#011F4F 0,#00153A 90px,#00153A calc(100% - 90px),#011F4F 100%)}
+html body section.bnd-deep+section.bnd-green{margin-top:0}
+.bnd-deep:has(+section.bnd-green):before{background:linear-gradient(180deg,#011F4F 0,#00153A 90px)}
+.bnd-paper:after,.bnd-green:after{content:"";position:absolute;left:-100vmax;right:-100vmax;top:0;height:1px;background:rgba(255,255,255,.35)}
+
+/* letras que se encienden en verde al pasar el dedo o el mouse */
+.lgw{display:inline-block;white-space:nowrap}
+.lgl{display:inline;transition:color .45s ease}
+.lgl.lg-on{color:#5BB47D!important;transition:color .08s}
+.hl .lgl.lg-on,.bnd-green .lgl.lg-on{color:#fff!important}
+.bnd-green .hl .lgl.lg-on{color:#011F4F!important}
+.bnd-paper .lgl.lg-on{color:#1F7F45!important}
+.bnd-paper .hl .lgl.lg-on{color:#011F4F!important}
+
+/* logo legAR dentro de los nombres del índice */
+.lbmn ol a .lbt{display:inline}
+.lbmn ol a .lblogo{height:.74em;width:auto;display:inline-block;vertical-align:-.02em;margin-left:.06em}

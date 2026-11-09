@@ -29,13 +29,14 @@ cfg.forEach(function(r,i){
   var li=doc.createElement('li'),a=doc.createElement('a');
   a.href=i===0?'#':'#'+el.id;
   a.innerHTML='<small>'+String(items.length+1).padStart(2,'0')+'</small>';
-  a.appendChild(doc.createTextNode(r[0]));
+  var lw=doc.createElement('span');lw.className='lbt';r[0].split('legAR').forEach(function(p,k){if(k){var im=doc.createElement('img');im.src='legar-tab-blanco.png';im.alt='legAR';im.className='lblogo';lw.appendChild(im)}if(p)lw.appendChild(doc.createTextNode(p))});a.appendChild(lw);
   if(r[2]==='ar')a.insertAdjacentHTML('beforeend','<svg class="lbflag" viewBox="0 0 28 18" aria-hidden="true"><rect width="28" height="18" rx="2.5" fill="#74ACDF"/><rect y="6" width="28" height="6" fill="#fff"/><circle cx="14" cy="9" r="2.9" fill="none" stroke="#F6B40E" stroke-width="1.3" stroke-dasharray=".7 .62"/><circle cx="14" cy="9" r="1.75" fill="#F6B40E"/></svg>');
   if(i===0)a.addEventListener('click',function(e){e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
   li.appendChild(a);if(ix)ix.appendChild(li);items.push({el:el,a:a});
 });
 
 var mb=$('#lbmb');
+var lbw=$('.lbmw');if(lbw&&!$('.lbclose')){var cb=doc.createElement('button');cb.type='button';cb.className='lbclose';cb.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Cerrar índice';var ftx=$('.lbft',lbw);lbw.insertBefore(cb,ftx||null);cb.addEventListener('click',function(){setMenu(false)})}
 function setMenu(o){root.classList.toggle('lbopen',o);if(mb){mb.setAttribute('aria-expanded',o);mb.querySelector('.t').textContent=o?'Cerrar':'Índice'}doc.body.style.overflow=o?'hidden':''}
 if(mb)mb.addEventListener('click',function(){setMenu(!root.classList.contains('lbopen'))});
 $$('.lbmn a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
@@ -146,4 +147,30 @@ var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isInter
 [].slice.call(d.querySelectorAll('.lg-rv')).forEach(function(e){io.observe(e)});
 /* al saltar desde el índice o un link, lo que queda arriba aparece de una */
 addEventListener('hashchange',function(){setTimeout(function(){[].slice.call(d.querySelectorAll('.lg-rv:not(.lg-in)')).forEach(function(e){if(e.getBoundingClientRect().top<innerHeight)e.classList.add('lg-in')})},400)});
+})();
+
+
+/* letras que se encienden en verde al pasar el dedo o el mouse (títulos) */
+(function(){
+var d=document;
+var hs=[].slice.call(d.querySelectorAll('h1,h2')).filter(function(h){return !h.closest('.lb,.lbmn,.md,.bx,#ov')&&!h.querySelector('.v3c,.lgl')});
+hs.forEach(function(h){
+  var label=(function walk(n){var s='';n.childNodes.forEach(function(c){if(c.nodeType===3)s+=c.nodeValue;else if(c.nodeType===1)s+=c.tagName==='IMG'?(c.alt||''):walk(c)});return s})(h).replace(/\s+/g,' ').trim();
+  if(!h.getAttribute('aria-label'))h.setAttribute('aria-label',label);
+  var tw=d.createTreeWalker(h,NodeFilter.SHOW_TEXT,null),nodes=[],n;while(n=tw.nextNode())if(n.nodeValue.trim())nodes.push(n);
+  nodes.forEach(function(t){
+    var f=d.createDocumentFragment();
+    t.nodeValue.split(/(\s+)/).forEach(function(w){
+      if(!w)return;if(/^\s+$/.test(w)){f.appendChild(d.createTextNode(w));return}
+      var ws=d.createElement('span');ws.className='lgw';ws.setAttribute('aria-hidden','true');
+      w.split('').forEach(function(ch){var c=d.createElement('span');c.className='lgl';c.textContent=ch;ws.appendChild(c)});
+      f.appendChild(ws);
+    });
+    t.parentNode.replaceChild(f,t);
+  });
+});
+function hit(x,y){var el=d.elementFromPoint(x,y);if(el&&el.classList&&el.classList.contains('lgl')){el.classList.add('lg-on');clearTimeout(el._lg);el._lg=setTimeout(function(){el.classList.remove('lg-on')},650)}}
+d.addEventListener('pointermove',function(e){if(e.pointerType==='mouse')hit(e.clientX,e.clientY)},{passive:true});
+d.addEventListener('touchmove',function(e){var t=e.touches[0];if(t)hit(t.clientX,t.clientY)},{passive:true});
+d.addEventListener('touchstart',function(e){var t=e.touches[0];if(t)hit(t.clientX,t.clientY)},{passive:true});
 })();
