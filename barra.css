@@ -1,0 +1,85 @@
+/* legAR · barra superior común: logo, botón de WhatsApp siempre visible, botón "Índice" con texto y menú a pantalla completa. */
+.tabs,#ix{display:none!important}
+html{scroll-padding-top:calc(112px + env(safe-area-inset-top,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#011F4F}
+
+.lb{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(1,31,79,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,192,206,.18)}
+.lbin{display:flex;align-items:center;gap:8px;height:58px;max-width:960px;margin:0 auto;padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px))}
+.lblg{margin-right:auto;display:flex;align-items:center}
+.lblg img{height:20px;width:auto;display:block}
+.lbcta{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;background:#4DA36C;color:#011F4F;border-radius:99px;padding:.55rem .95rem .55rem .75rem;font:700 .86rem "Source Sans 3",system-ui,sans-serif;text-decoration:none;box-shadow:0 4px 0 #2E6E46,0 8px 18px rgba(0,0,0,.3)}
+.lbcta svg{width:18px;height:18px;flex:none}
+.lbix{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 .85rem 0 .7rem;border-radius:99px;background:rgba(255,255,255,.08);border:1.5px solid rgba(233,240,248,.55);color:#F3F6FB;font:700 .84rem Montserrat,system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lbix svg{width:18px;height:18px;flex:none}
+.lbix .icx{display:none}.lbopen .lbix .icx{display:block}.lbopen .lbix .ich{display:none}
+.lbix:hover{background:rgba(255,255,255,.14)}
+.lbix:focus-visible,.lbcta:focus-visible{outline:3px solid #8FCBA4;outline-offset:2px}
+.lbtabs{display:flex;justify-content:center;gap:3px;padding:0 max(10px,env(safe-area-inset-right,0px)) 10px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.lbtabs::-webkit-scrollbar{display:none}
+.lbtabs a{flex:none;color:#D7DCE6;text-decoration:none;font:700 .72rem Montserrat,system-ui,sans-serif;padding:.4rem .7rem;border-radius:99px;border:1px solid rgba(184,192,206,.22);white-space:nowrap}
+.lbtabs a[aria-current=page]{background:#F3F6FB;color:#011F4F;border-color:#F3F6FB}
+.lbtabs a:not([aria-current]):hover{background:rgba(255,255,255,.08)}
+@media (max-width:440px){.lbtabs{gap:2px;padding-left:6px;padding-right:6px}.lbtabs a{padding:.38rem .42rem;font-size:.6rem;letter-spacing:-.01em}}
+@media (max-width:372px){.lbtabs a{padding:.36rem .3rem;font-size:.55rem}}
+@media (max-width:370px){.lbcta{padding:.5rem .7rem .5rem .6rem;font-size:.8rem}.lbix{padding:0 .6rem}}
+
+/* menú índice */
+.lbmn{position:fixed;inset:0;z-index:25;background:#072A5F;padding-top:calc(112px + env(safe-area-inset-top,0px));padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.lbopen .lbmn{opacity:1;visibility:visible}
+.lbmw{max-width:640px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.lbml{font:700 .66rem Montserrat,system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#9CA4B4;margin:0 0 10px}
+.lbmn ol{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:4px}
+.lbmn ol li{all:unset;display:block}
+.lbmn ol li:before,.lbmn ol li:after{content:none!important}
+.lbmn ol a{display:flex;align-items:baseline;gap:14px;text-decoration:none;color:#F3F6FB;font:800 clamp(1.45rem,7vw,2.2rem)/1.15 Montserrat,system-ui,sans-serif;letter-spacing:-.03em;padding:2px 0}
+.lbmn ol a small{font:600 .72rem "Source Sans 3",system-ui,sans-serif;letter-spacing:.06em;color:#9CA4B4;width:22px;flex:none}
+.lbmn ol a:hover,.lbmn ol a.on{color:#8FCBA4}
+.lbpg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.lbpg a{color:#F3F6FB;text-decoration:none;border:1.5px solid rgba(184,192,206,.3);border-radius:99px;padding:.5rem .95rem;font:700 .9rem Montserrat,system-ui,sans-serif}
+.lbpg a[aria-current=page]{border-color:#4DA36C;color:#8FCBA4}
+.lbseg{display:flex;align-items:center;gap:12px;margin:0 0 28px;padding:14px 16px;border-radius:16px;border:1.5px solid rgba(77,163,108,.6);background:rgba(77,163,108,.12);color:#F3F6FB;text-decoration:none}
+.lbseg svg{width:26px;height:26px;flex:none;color:#8FCBA4}
+.lbseg b{display:block;font:800 1.05rem Montserrat,system-ui,sans-serif}.lbseg span{color:#B8C0CE;font-size:.9rem}
+.lbft{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.9rem;color:#B8C0CE}
+.lbft a{color:inherit;text-decoration:none}.lbft a:hover{color:#8FCBA4}
+.lbopen .fab{opacity:0;pointer-events:none}
+
+/* seguimiento (copiado de legAR Digital) */
+.sgt .tk{margin-top:24px;border-radius:24px;padding:22px 20px;background:linear-gradient(160deg,#072A5F,#011F4F);border:1.5px solid rgba(77,163,108,.55);box-shadow:0 0 0 6px rgba(77,163,108,.07),0 24px 60px rgba(0,0,0,.35);position:relative;overflow:hidden;text-align:left}
+.sgt label{display:block;font:700 .66rem Montserrat,system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9CA4B4;margin-bottom:8px}
+.sgt .in2{display:flex;gap:10px;flex-wrap:wrap}
+.sgt input{flex:1 1 200px;min-width:0;padding:.85rem 1rem;border-radius:14px;border:1.5px solid rgba(184,192,206,.3);background:rgba(0,21,58,.6);color:#F3F6FB;font:700 1.35rem "Source Sans 3",system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color-scheme:dark}
+.sgt input::placeholder{color:#5D6B86}
+.sgt input:focus{outline:none;border-color:#4DA36C}
+.sgt .go{flex:1 1 140px;display:inline-flex;align-items:center;justify-content:center;background:#4DA36C;color:#011F4F;border-radius:14px;padding:.95rem 1.2rem;font:700 1rem "Source Sans 3",system-ui,sans-serif;text-decoration:none}
+.sgt .er2{min-height:1.3em;margin:8px 0 0;font-size:.88rem;color:#FF9A9A}
+.sgt .nc{font-size:.88rem;color:#B8C0CE;margin:0}
+.sgt .nc a{color:#F3F6FB;text-decoration-color:#4DA36C;text-underline-offset:4px}
+.sgt .prev{margin-top:18px;display:grid;gap:8px}
+.sgt .lbx{font:700 .62rem Montserrat,system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9CA4B4}
+.sgt .pv{background:#EEF2F7;color:#011F4F;border-radius:16px;padding:14px 16px}
+.sgt .pv b{display:block;font:800 1rem Montserrat,system-ui,sans-serif;letter-spacing:-.02em}
+.sgt .pv small{display:block;font-size:.82rem;color:#5A6478}
+.sgt .stt{display:flex;align-items:center;gap:8px;margin-top:10px;background:#E7EEF9;color:#2F62B0;border-radius:10px;padding:8px 10px;font-weight:700;font-size:.9rem}
+.sgt .stt i{width:9px;height:9px;border-radius:50%;background:currentColor}
+.sgt .br{display:flex;gap:4px;margin-top:10px}.sgt .br span{flex:1;height:5px;border-radius:99px;background:#DCE3EC}.sgt .br span.on{background:#4DA36C}.sgt .br span.cu{background:#011F4F}
+.sgt .ben{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px;text-align:left}
+.sgt .ben li{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;color:#B8C0CE;font-size:.96rem;padding:0;border:0;background:none}
+.sgt .ben li:before,.sgt .ben li:after{content:none!important}
+.sgt .ben li b{color:#F3F6FB;display:block}
+.sgt .ben li i{width:30px;height:30px;border-radius:9px;background:rgba(77,163,108,.14);border:1px solid rgba(77,163,108,.45);display:grid;place-items:center;color:#8FCBA4;font-style:normal;font-weight:800;font-size:.9rem}
+
+/* botones de WhatsApp: se hunden y vuelven, como un botón que se aprieta */
+@keyframes waPress{0%,58%,100%{transform:translateY(0);box-shadow:0 5px 0 #2E6E46,0 10px 22px rgba(0,0,0,.3)}64%{transform:translateY(4px);box-shadow:0 1px 0 #2E6E46,0 3px 8px rgba(0,0,0,.3)}70%{transform:translateY(0);box-shadow:0 5px 0 #2E6E46,0 10px 22px rgba(0,0,0,.3)}76%{transform:translateY(4px);box-shadow:0 1px 0 #2E6E46,0 3px 8px rgba(0,0,0,.3)}82%{transform:translateY(0);box-shadow:0 5px 0 #2E6E46,0 10px 22px rgba(0,0,0,.3)}}
+@keyframes waPressFab{0%,58%,100%{transform:translateX(-50%) translateY(0);box-shadow:0 5px 0 #2E6E46,0 10px 22px rgba(0,0,0,.45)}64%{transform:translateX(-50%) translateY(4px);box-shadow:0 1px 0 #2E6E46,0 3px 8px rgba(0,0,0,.45)}70%{transform:translateX(-50%) translateY(0);box-shadow:0 5px 0 #2E6E46,0 10px 22px rgba(0,0,0,.45)}76%{transform:translateX(-50%) translateY(4px);box-shadow:0 1px 0 #2E6E46,0 3px 8px rgba(0,0,0,.45)}82%{transform:translateX(-50%) translateY(0);box-shadow:0 5px 0 #2E6E46,0 10px 22px rgba(0,0,0,.45)}}
+@keyframes waPressSm{0%,58%,100%{transform:translateY(0)}64%{transform:translateY(3px)}70%{transform:translateY(0)}76%{transform:translateY(3px)}82%{transform:translateY(0)}}
+@keyframes waPressCta{0%,58%,100%{transform:translateY(0);box-shadow:0 4px 0 #2E6E46,0 8px 18px rgba(0,0,0,.3)}64%{transform:translateY(3px);box-shadow:0 1px 0 #2E6E46,0 2px 6px rgba(0,0,0,.3)}70%{transform:translateY(0);box-shadow:0 4px 0 #2E6E46,0 8px 18px rgba(0,0,0,.3)}76%{transform:translateY(3px);box-shadow:0 1px 0 #2E6E46,0 2px 6px rgba(0,0,0,.3)}82%{transform:translateY(0);box-shadow:0 4px 0 #2E6E46,0 8px 18px rgba(0,0,0,.3)}}
+html body a.btn[href*="wa.me"],html body a.btn2[href*="wa.me"]{animation:waPress 3.2s ease-in-out infinite}
+html body a.btn2[href*="wa.me"]{animation-name:waPressSm}
+html body .fab:not(.h){animation:waPressFab 3.2s ease-in-out infinite}
+html body .lbcta{animation:waPressCta 3.2s ease-in-out infinite}
+html body a[href*="wa.me"]:not(.btn):not(.btn2):not(.lbcta){animation:waPressSm 3.2s ease-in-out infinite}
+html body .lbmn a[href*="wa.me"],html body .lbft a{animation:none!important}
+html body a[href*="wa.me"]:active,html body .fab:active,html body .lbcta:active{animation:none!important;transform:translateY(4px)}
+html body .fab:active{transform:translateX(-50%) translateY(4px)}
+@media (prefers-reduced-motion:reduce){html body a[href*="wa.me"],html body .fab,html body .lbcta{animation:none!important}}
