@@ -1,6 +1,6 @@
 # legAR · Web
 
-Sitio de legAR (antes Diligencias La Plata), publicado en Netlify.
+Sitio de legAR (antes Diligencias La Plata), publicado en GitHub Pages: https://legardigital.github.io/legar-web/
 
 - `index.html`: solapa legAR (inicio)
 - `gestoria.html`: Gestoría
