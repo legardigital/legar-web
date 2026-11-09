@@ -225,3 +225,25 @@ html body section.bnd-deep+section.bnd-green{margin-top:0}
 /* logo legAR dentro de los nombres del índice */
 .lbmn ol a .lbt{display:inline}
 .lbmn ol a .lblogo{height:.74em;width:auto;display:inline-block;vertical-align:-.02em;margin-left:.06em}
+
+/* ubicación arriba del título */
+.ubic{display:flex;align-items:center;justify-content:center;gap:7px;margin:16px auto 6px;font:700 .8rem Montserrat,system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8FCBA4}
+.ubic svg{width:17px;height:17px;flex:none;color:#5BB47D}
+.ubic i{font-style:normal;opacity:.6}
+.hcw .ubic{margin-top:12px}
+
+/* quién está a cargo (Gestoría) */
+.quien{display:flex;align-items:center;gap:14px;margin:18px 0 6px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid #DCE3EC;box-shadow:0 6px 18px rgba(1,31,79,.06);text-align:left}
+.quien img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid #4DA36C;flex:none}
+.quien div{display:grid;gap:1px;min-width:0}
+.quien small{font:700 .64rem Montserrat,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1F7F45!important}
+.quien b{font:800 1.08rem Montserrat,system-ui,sans-serif;color:#011F4F!important}
+.quien span{font-size:.88rem;color:#3F4B63!important;line-height:1.35}
+.quien a{margin-top:4px;font-weight:700;font-size:.9rem;color:#011F4F!important;text-decoration:underline;text-decoration-color:#4DA36C;text-underline-offset:4px}
+
+/* seguinos en Instagram (pie de todas las páginas) */
+footer .igf{display:flex;align-items:center;gap:10px;width:fit-content;margin:0 auto 16px;padding:.6rem 1.1rem .6rem .8rem;border-radius:99px;border:1.5px solid rgba(233,240,248,.45);color:#F3F6FB!important;text-decoration:none;text-align:left;background:rgba(255,255,255,.06)}
+footer .igf svg{width:24px;height:24px;flex:none}
+footer .igf span{display:grid;font:700 .92rem Montserrat,system-ui,sans-serif;line-height:1.15}
+footer .igf small{font:500 .78rem "Source Sans 3",system-ui,sans-serif;opacity:.8}
+footer .igf:hover{border-color:#8FCBA4}
