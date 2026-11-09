@@ -126,3 +126,24 @@ d.addEventListener('click',function(e){
 });
 })();
 
+
+/* secciones y tarjetas que aparecen al bajar */
+(function(){
+var d=document,root=d.documentElement;
+if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+if(d.querySelector('.sl-u,.sl-l,.sl-r'))return; /* Marketing ya tiene su propia animación */
+var SEL=['section h2','section .sub','section ol>li','section details','.sv2>details','.adc','a.jb','.jt','.ar2>a','.tl2>div','.pq>div','.mjc','.qhc','.dic','.rvc','.rve','.doors','.why>div','.bn>li','.rf','.sgt .tk','.ben>li','.case','.me2','.evo','#lbix'].join(',');
+var els=[].slice.call(d.querySelectorAll(SEL)).filter(function(e){return !e.closest('.lb,.lbmn,.c.top,.hero,.v3hero,#mapa svg,.bub,.lbix')&&!e.parentElement.closest('.lg-rv')&&e.id!=='lbix'});
+var vh=innerHeight;
+root.classList.add('lg-rvon');
+els.forEach(function(e){
+  if(e.getBoundingClientRect().top<vh*.92)return; /* lo que ya se ve al entrar, queda quieto */
+  e.classList.add('lg-rv');
+  var sib=e.parentElement?[].indexOf.call(e.parentElement.children,e):0;
+  e.style.transitionDelay=Math.min(sib,5)*70+'ms';
+});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('lg-in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+[].slice.call(d.querySelectorAll('.lg-rv')).forEach(function(e){io.observe(e)});
+/* al saltar desde el índice o un link, lo que queda arriba aparece de una */
+addEventListener('hashchange',function(){setTimeout(function(){[].slice.call(d.querySelectorAll('.lg-rv:not(.lg-in)')).forEach(function(e){if(e.getBoundingClientRect().top<innerHeight)e.classList.add('lg-in')})},400)});
+})();

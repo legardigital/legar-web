@@ -135,3 +135,59 @@ html.lgc-on input,html.lgc-on textarea,html.lgc-on select,html.lgc-on [contented
 .fqmore[hidden]{display:none!important}
 .cqh{font:800 1.25rem Montserrat,system-ui,sans-serif;margin:30px 0 6px;color:#F3F6FB}
 
+
+/* ===== palabras destacadas: en verde, sin recuadro ===== */
+html body .hl{background:none!important;box-shadow:none!important;transform:none!important;padding:0!important;border-radius:0!important;color:#5BB47D!important;display:inline!important;font-style:inherit!important}
+
+/* ===== franjas de color (pocas, para cortar el azul) ===== */
+.bnd-paper,.bnd-green,.bnd-deep{position:relative;clip-path:inset(0 -100vmax)}
+html body section.bnd-paper,html body section.bnd-green,html body section.bnd-deep{padding-top:52px!important;padding-bottom:46px!important;margin-top:28px}
+.bnd-blk{padding:26px 0 30px;margin:28px 0 8px}
+.bnd-paper{background:#EEF2F7!important;box-shadow:0 0 0 100vmax #EEF2F7!important;color:#011F4F}
+.bnd-green{background:#4DA36C!important;box-shadow:0 0 0 100vmax #4DA36C!important;color:#011F4F}
+.bnd-deep{background:#00153A!important;box-shadow:0 0 0 100vmax #00153A!important}
+.bnd-tail{margin-top:0!important;padding-top:0!important}
+html body section.bnd-green+section.bnd-tail{margin-top:0}
+/* franja clara: textos y tarjetas */
+.bnd-paper h2,.bnd-paper h3,.bnd-paper b,.bnd-paper strong,.bnd-paper .dw,.bnd-paper .dfin,.bnd-paper summary{color:#011F4F!important}
+.bnd-paper .sub,.bnd-paper p,.bnd-paper small,.bnd-paper li>span,.bnd-paper .dd,.bnd-paper .dc span,.bnd-paper .adc p,.bnd-paper a.jb span{color:#3F4B63!important}
+.bnd-paper .hl,.bnd-paper .dc b,.bnd-paper .kick,.bnd-paper .jt,.bnd-paper a.jb i{color:#1F7F45!important}
+.bnd-paper ol li,.bnd-paper .dic,.bnd-paper .adc,.bnd-paper a.jb,.bnd-paper details,.bnd-paper .blk{background:#fff!important;border:1px solid #DCE3EC!important;box-shadow:0 6px 18px rgba(1,31,79,.06)!important}
+.bnd-paper .dic .da{border-bottom-color:#DCE3EC!important}.bnd-paper .dn,.bnd-paper .dn small,.bnd-paper .dw span{color:#5A6478!important}
+.bnd-paper .adc .og{color:#5A6478!important}
+.bnd-paper .adc a,.bnd-paper .ln a{color:#011F4F!important}
+.bnd-paper img.h2lg,.bnd-paper img.lglo,.bnd-paper .dfl{filter:brightness(0) saturate(100%) invert(9%) sepia(60%) saturate(4000%) hue-rotate(210deg)}
+.bnd-paper .btn small,.bnd-paper .btn span{color:inherit!important}
+.bnd-paper button,.bnd-paper .vermas{color:#011F4F;border-color:#B8C4D4}
+.bnd-paper [class*="ad"] [class*="vl"],.bnd-paper .adc .big,.bnd-paper .adc .num{color:#1F7F45!important}
+/* franja verde: el cierre que pide el contacto */
+.bnd-green h2{color:#011F4F!important;font-size:clamp(2.2rem,10.5vw,4.4rem)!important;line-height:.98!important;letter-spacing:-.04em!important;text-transform:none!important}
+.bnd-green .hl{color:#fff!important}
+.bnd-green .sub,.bnd-green p,.bnd-green small,.bnd-green label,.bnd-green .ar2 a span{color:#011F4F!important}
+.bnd-green .btn,.bnd-green a.btn{background:#011F4F!important;color:#fff!important;box-shadow:0 5px 0 #000B22,0 12px 26px rgba(1,31,79,.35)!important}
+.bnd-green .btn small{color:#C9D6E6!important}
+.bnd-green .l a,.bnd-green .ct2 a,.bnd-green a:not(.btn){color:#011F4F!important}
+.bnd-green .l svg{color:#011F4F}
+.bnd-green .ar2 a{background:rgba(255,255,255,.18)!important;border-color:rgba(1,31,79,.35)!important}
+.bnd-green .ar2 a b{color:#011F4F!important}.bnd-green .ar2 a em{color:#fff!important}
+.bnd-green .rf{background:rgba(255,255,255,.2)!important;border-color:rgba(1,31,79,.25)!important;box-shadow:none!important}
+.bnd-green .rf input,.bnd-green .rf select,.bnd-green .rf textarea{background:#fff!important;color:#011F4F!important;border-color:rgba(1,31,79,.25)!important}
+.bnd-green .rf input::placeholder,.bnd-green .rf textarea::placeholder{color:#6B7891}
+.bnd-green .er{color:#5C0B0B!important}
+@keyframes waPressNavy{0%,58%,100%{transform:translateY(0)}64%,76%{transform:translateY(4px)}70%,82%{transform:translateY(0)}}
+html body .bnd-green a.btn[href*="wa.me"]{animation-name:waPressNavy}
+
+/* ===== secciones que aparecen al bajar ===== */
+html.lg-rvon .lg-rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+html.lg-rvon .lg-rv.lg-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html.lg-rvon .lg-rv{opacity:1;transform:none;transition:none}}
+/* tarjetas de valores sobre la franja clara */
+.bnd-paper .vj{background:#fff!important;border:1px solid #DCE3EC!important;box-shadow:0 6px 18px rgba(1,31,79,.06)!important}
+.bnd-paper .vj .jr{color:#5A6478!important}
+.bnd-paper .vj .un{color:#011F4F!important}
+.bnd-paper .vj .vl{color:#1F7F45!important}
+.bnd-paper .vj .vg{color:#011F4F!important}
+.bnd-paper .vj small{color:#5A6478!important}
+.bnd-paper .vj a,.bnd-paper a.more{color:#011F4F!important;text-decoration-color:#4DA36C!important}
+.bnd-paper details summary,.bnd-paper details p,.bnd-paper details span{color:#011F4F!important}
+.bnd-paper details .vj span,.bnd-paper details .vj small{color:#3F4B63!important}
