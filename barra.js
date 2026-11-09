@@ -125,3 +125,26 @@ d.addEventListener('click',function(e){
   b.addEventListener('click',function(){var o=box.hidden;box.hidden=!o;b.setAttribute('aria-expanded',o);b.textContent=o?b.dataset.less:b.dataset.more;if(!o)b.scrollIntoView({block:'center',behavior:'smooth'})});
 });
 })();
+
+/* aviso: "este es el índice" (se muestra hasta que la persona lo usa o lo cierra) */
+(function(){
+var mb=document.getElementById('lbmb');if(!mb)return;
+var KEY='lgIdxVisto';
+function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function sget(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function sset(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
+if(get(KEY)||sget('lgIdxHint'))return;
+var h=document.createElement('div');h.className='lbhint';h.setAttribute('role','status');
+h.innerHTML='<b>Este es el índice</b>Tocalo para saltar directo a cualquier sección.<button type="button" aria-label="Cerrar aviso">×</button>';
+document.body.appendChild(h);
+function place(){var r=mb.getBoundingClientRect();var w=Math.min(240,innerWidth-24);h.style.maxWidth=w+'px';
+  var left=Math.max(12,Math.min(r.right-w,innerWidth-w-12));h.style.left=left+'px';h.style.top=(r.bottom+12)+'px';
+  h.style.setProperty('--ax',Math.max(12,(left+w)-(r.left+r.width/2)-7)+'px')}
+var t;
+function hide(seen){h.classList.remove('on');mb.classList.remove('lbpulse');clearTimeout(t);if(seen)set(KEY,'1');setTimeout(function(){h.remove()},350)}
+setTimeout(function(){if(document.documentElement.classList.contains('lbopen'))return;place();h.classList.add('on');mb.classList.add('lbpulse');sset('lgIdxHint','1');t=setTimeout(function(){hide(false)},8000)},1800);
+addEventListener('resize',place);
+h.querySelector('button').addEventListener('click',function(){hide(true)});
+mb.addEventListener('click',function(){hide(true)});
+})();

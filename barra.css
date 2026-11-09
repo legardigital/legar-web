@@ -134,3 +134,14 @@ html.lgc-on input,html.lgc-on textarea,html.lgc-on select,html.lgc-on [contented
 .nvmore{display:contents}.nvmore[hidden]{display:none!important}
 .fqmore[hidden]{display:none!important}
 .cqh{font:800 1.25rem Montserrat,system-ui,sans-serif;margin:30px 0 6px;color:#F3F6FB}
+
+/* aviso del índice */
+.lbhint{position:fixed;z-index:31;max-width:240px;background:#F3F6FB;color:#011F4F;border-radius:14px;padding:12px 34px 12px 14px;font:600 .9rem/1.35 "Source Sans 3",system-ui,sans-serif;box-shadow:0 14px 34px rgba(0,0,0,.4);opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;pointer-events:none}
+.lbhint.on{opacity:1;transform:none;pointer-events:auto}
+.lbhint b{display:block;font:800 .95rem Montserrat,system-ui,sans-serif;margin-bottom:2px}
+.lbhint:before{content:"";position:absolute;top:-7px;right:var(--ax,30px);width:14px;height:14px;background:#F3F6FB;transform:rotate(45deg);border-radius:2px}
+.lbhint button{position:absolute;right:6px;top:6px;width:24px;height:24px;border:0;background:none;color:#3F4B63;font-size:1.1rem;line-height:1;cursor:pointer;border-radius:50%}
+.lbhint button:focus-visible{outline:2px solid #4DA36C}
+@keyframes lbPulse{0%,100%{box-shadow:0 0 0 0 rgba(143,203,164,.7)}60%{box-shadow:0 0 0 9px rgba(143,203,164,0)}}
+.lbix.lbpulse{animation:lbPulse 1.4s ease-out 4;border-color:#8FCBA4}
+@media (prefers-reduced-motion:reduce){.lbhint{transition:none}.lbix.lbpulse{animation:none}}
