@@ -84,3 +84,18 @@ html body .lbmn a[href*="wa.me"],html body .lbft a{animation:none!important}
 html body a[href*="wa.me"]:active,html body .fab:active,html body .lbcta:active{animation:none!important;transform:translateY(4px)}
 html body .fab:active{transform:translateX(-50%) translateY(4px)}
 @media (prefers-reduced-motion:reduce){html body a[href*="wa.me"],html body .fab,html body .lbcta{animation:none!important}}
+
+/* cursor legAR: puntito blanco que se convierte en el halcón sobre lo que se puede tocar */
+html.curon,html.curon *{cursor:none!important}
+html.curon input,html.curon textarea,html.curon select,html.curon [contenteditable]{cursor:text!important}
+.cur{position:fixed;left:0;top:0;z-index:2147483000;pointer-events:none;width:0;height:0;opacity:0;transition:opacity .25s}
+.cur.vis{opacity:1}
+.cur .cd{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px rgba(1,31,79,.55),0 0 12px rgba(255,255,255,.55);transition:transform .25s cubic-bezier(.3,1.4,.5,1),opacity .2s}
+.cur .ce{position:absolute;left:-36px;top:-26px;width:72px;height:47px;perspective:260px}
+.cur .ce i{display:block;width:100%;height:100%;background:url(halcon.png) center/contain no-repeat;transform-origin:50% 60%;transform:scale(.15);opacity:0;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45)) drop-shadow(0 0 10px rgba(77,163,108,.55));transition:opacity .2s,transform .3s cubic-bezier(.3,1.5,.5,1);will-change:transform}
+.cur.hov .cd{transform:scale(.25);opacity:0}
+.cur.hov .ce i{opacity:1}
+.cur.txt{opacity:0!important}
+@keyframes curFlap{0%{transform:var(--t) scaleX(1) scaleY(1)}25%{transform:var(--t) scaleX(.62) scaleY(1.08) translateY(-4px)}55%{transform:var(--t) scaleX(1.12) scaleY(.94) translateY(-10px)}100%{transform:var(--t) scaleX(1) scaleY(1)}}
+.cur.flap .ce i{animation:curFlap .45s ease-out}
+.cur.dn .cd{transform:scale(.6)}

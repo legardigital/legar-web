@@ -54,3 +54,44 @@ if(sc&&sg&&SEG){
   var f=$('#sgf');if(f)f.addEventListener('submit',function(e){e.preventDefault();if(norm().length===8)sg.click();else se.textContent=MSG});
 }
 })();
+
+/* cursor legAR */
+(function(){
+if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var d=document,root=d.documentElement;
+var c=d.createElement('div');c.className='cur';c.setAttribute('aria-hidden','true');
+c.innerHTML='<span class="cd"></span><span class="ce"><i></i></span>';
+d.body.appendChild(c);root.classList.add('curon');
+var eg=c.querySelector('.ce i');
+var CLICK='a,button,summary,label,select,[role=button],[onclick],.bb,.pin,.chit,.m,.pr,.sb,.go';
+var TXT='input:not([type=button]):not([type=submit]):not([type=checkbox]):not([type=radio]),textarea,[contenteditable]';
+var mx=-100,my=-100,x=-100,y=-100,vx=0,vy=0,rx=0,ry=0,hov=false,run=false;
+function loop(){
+  var k=reduce?1:.32;
+  var nx=x+(mx-x)*k,ny=y+(my-y)*k;vx=nx-x;vy=ny-y;x=nx;y=ny;
+  c.style.transform='translate3d('+x+'px,'+y+'px,0)';
+  if(hov){
+    var ty=reduce?0:Math.max(-55,Math.min(55,vx*4)),tx=reduce?0:Math.max(-45,Math.min(45,-vy*4));
+    ry+=(ty-ry)*.18;rx+=(tx-rx)*.18;
+    var t='rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg) rotateZ('+(ry*.25).toFixed(1)+'deg)';
+    eg.style.setProperty('--t',t);
+    if(!c.classList.contains('flap'))eg.style.transform=t+' scale(1)';
+  }else{eg.style.transform='scale(.15)';rx=ry=0}
+  if(Math.abs(mx-x)>.1||Math.abs(my-y)>.1||Math.abs(rx)>.2||Math.abs(ry)>.2)requestAnimationFrame(loop);else run=false;
+}
+function kick(){if(!run){run=true;requestAnimationFrame(loop)}}
+d.addEventListener('pointermove',function(e){
+  if(e.pointerType&&e.pointerType!=='mouse')return;
+  mx=e.clientX;my=e.clientY;c.classList.add('vis');
+  var t=e.target;
+  c.classList.toggle('txt',!!(t.closest&&t.closest(TXT)));
+  hov=!!(t.closest&&t.closest(CLICK));c.classList.toggle('hov',hov);kick();
+},{passive:true});
+d.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;c.classList.add('dn');
+  if(hov&&!reduce){c.classList.remove('flap');void eg.offsetWidth;c.classList.add('flap');setTimeout(function(){c.classList.remove('flap');kick()},460)}});
+d.addEventListener('pointerup',function(){c.classList.remove('dn')});
+d.addEventListener('mouseleave',function(){c.classList.remove('vis')});
+root.addEventListener('mouseleave',function(){c.classList.remove('vis')});
+d.addEventListener('mouseenter',function(){c.classList.add('vis')});
+})();

@@ -1,0 +1,15 @@
+/* legAR · cursor: puntito blanco que, al presionar algo, se convierte en el halcón en 3D. Solo en computadoras con mouse. */
+html.lcur,html.lcur *{cursor:none!important}
+html.lcur input,html.lcur textarea,html.lcur select,html.lcur [contenteditable]{cursor:text!important}
+.lcur-dot,.lcur-hk{position:fixed;left:0;top:0;pointer-events:none;z-index:2147483000;will-change:transform}
+.lcur-dot{width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(1,31,79,.35),0 2px 8px rgba(0,0,0,.35);transition:width .2s,height .2s,margin .2s,background .2s,box-shadow .2s,opacity .2s}
+.lcur-dot.on{width:34px;height:34px;margin:-17px 0 0 -17px;background:rgba(255,255,255,.12);box-shadow:0 0 0 2px #fff,0 0 18px rgba(143,203,164,.55)}
+.lcur-dot.off,.lcur-dot.hk{opacity:0}
+.lcur-hk{width:96px;height:62px;margin:-31px 0 0 -48px;perspective:420px;opacity:0;transition:opacity .18s}
+.lcur-hk.show{opacity:1}
+.lcur-hk .b{position:absolute;inset:0;transform-style:preserve-3d;transform:scale(.15);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.lcur-hk.show .b{transform:scale(1)}
+.lcur-hk .r{position:absolute;inset:0;transform-style:preserve-3d}
+.lcur-hk .l{position:absolute;inset:0;-webkit-mask:url(halcon.png) center/contain no-repeat;mask:url(halcon.png) center/contain no-repeat}
+.lcur-hk .f{position:absolute;inset:0;background:url(halcon.png) center/contain no-repeat;filter:drop-shadow(0 0 1px rgba(1,31,79,.6))}
+.lcur-hk .sh{position:absolute;left:12%;right:12%;bottom:-26px;height:12px;border-radius:50%;background:radial-gradient(rgba(0,0,0,.45),transparent 70%);transform:translateZ(-30px)}
