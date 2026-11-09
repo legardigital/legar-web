@@ -60,38 +60,60 @@ if(sc&&sg&&SEG){
 if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var d=document,root=d.documentElement;
-var c=d.createElement('div');c.className='cur';c.setAttribute('aria-hidden','true');
-c.innerHTML='<span class="cd"></span><span class="ce"><i></i></span>';
-d.body.appendChild(c);root.classList.add('curon');
-var eg=c.querySelector('.ce i');
+var c=d.createElement('div');c.className='lgcur';c.setAttribute('aria-hidden','true');
+c.innerHTML='<span class="lgc-dot"></span><span class="lgc-egg"><i></i></span>';
+d.body.appendChild(c);
+var eg=c.querySelector('.lgc-egg i');
 var CLICK='a,button,summary,label,select,[role=button],[onclick],.bb,.pin,.chit,.m,.pr,.sb,.go';
 var TXT='input:not([type=button]):not([type=submit]):not([type=checkbox]):not([type=radio]),textarea,[contenteditable]';
-var mx=-100,my=-100,x=-100,y=-100,vx=0,vy=0,rx=0,ry=0,hov=false,run=false;
+var FLY='a[href*="wa.me"],a[href*="instagram.com"]';
+var mx=0,my=0,x=0,y=0,rx=0,ry=0,hov=false,run=false,seen=false;
+function show(o){c.classList.toggle('lgc-v',o);root.classList.toggle('lgc-on',o)}
 function loop(){
-  var k=reduce?1:.32;
-  var nx=x+(mx-x)*k,ny=y+(my-y)*k;vx=nx-x;vy=ny-y;x=nx;y=ny;
-  c.style.transform='translate3d('+x+'px,'+y+'px,0)';
-  if(hov){
-    var ty=reduce?0:Math.max(-55,Math.min(55,vx*4)),tx=reduce?0:Math.max(-45,Math.min(45,-vy*4));
-    ry+=(ty-ry)*.18;rx+=(tx-rx)*.18;
-    var t='rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg) rotateZ('+(ry*.25).toFixed(1)+'deg)';
-    eg.style.setProperty('--t',t);
-    if(!c.classList.contains('flap'))eg.style.transform=t+' scale(1)';
-  }else{eg.style.transform='scale(.15)';rx=ry=0}
-  if(Math.abs(mx-x)>.1||Math.abs(my-y)>.1||Math.abs(rx)>.2||Math.abs(ry)>.2)requestAnimationFrame(loop);else run=false;
+  var k=reduce?1:.45,vx=(mx-x)*k,vy=(my-y)*k;x+=vx;y+=vy;
+  c.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+  var ty=hov&&!reduce?Math.max(-55,Math.min(55,vx*5)):0,tx=hov&&!reduce?Math.max(-45,Math.min(45,-vy*5)):0;
+  ry+=(ty-ry)*.2;rx+=(tx-rx)*.2;
+  eg.style.transform='rotateY('+ry.toFixed(1)+'deg) rotateX('+rx.toFixed(1)+'deg) rotateZ('+(ry*.25).toFixed(1)+'deg)';
+  if(Math.abs(mx-x)>.2||Math.abs(my-y)>.2||Math.abs(rx)>.3||Math.abs(ry)>.3)requestAnimationFrame(loop);else run=false;
 }
 function kick(){if(!run){run=true;requestAnimationFrame(loop)}}
 d.addEventListener('pointermove',function(e){
   if(e.pointerType&&e.pointerType!=='mouse')return;
-  mx=e.clientX;my=e.clientY;c.classList.add('vis');
+  mx=e.clientX;my=e.clientY;if(!seen){seen=true;x=mx;y=my}
+  show(true);
   var t=e.target;
-  c.classList.toggle('txt',!!(t.closest&&t.closest(TXT)));
-  hov=!!(t.closest&&t.closest(CLICK));c.classList.toggle('hov',hov);kick();
+  c.classList.toggle('lgc-t',!!(t.closest&&t.closest(TXT)));
+  hov=!!(t.closest&&t.closest(CLICK));c.classList.toggle('lgc-h',hov);kick();
 },{passive:true});
-d.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;c.classList.add('dn');
-  if(hov&&!reduce){c.classList.remove('flap');void eg.offsetWidth;c.classList.add('flap');setTimeout(function(){c.classList.remove('flap');kick()},460)}});
-d.addEventListener('pointerup',function(){c.classList.remove('dn')});
-d.addEventListener('mouseleave',function(){c.classList.remove('vis')});
-root.addEventListener('mouseleave',function(){c.classList.remove('vis')});
-d.addEventListener('mouseenter',function(){c.classList.add('vis')});
+d.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')c.classList.add('lgc-d')});
+d.addEventListener('pointerup',function(){c.classList.remove('lgc-d')});
+/* si el mouse sale de la página o se cambia de pestaña, el puntito se esconde y vuelve la flecha */
+d.addEventListener('pointerout',function(e){if(!e.relatedTarget)show(false)});
+root.addEventListener('mouseleave',function(){show(false)});
+addEventListener('blur',function(){show(false)});
+d.addEventListener('visibilitychange',function(){if(d.hidden)show(false)});
+
+/* el halcón sale volando al tocar WhatsApp o Instagram */
+function fly(){
+  if(reduce||!seen)return 0;
+  var f=d.createElement('div');f.className='lgc-fly';f.setAttribute('aria-hidden','true');f.innerHTML='<i></i>';d.body.appendChild(f);
+  var sx=mx<innerWidth/2?1:-1,top=my<innerHeight*.35,p=[sx*(.7+Math.random()*.3),top?(.25+Math.random()*.35):-(.5+Math.random()*.5)];
+  var dx=p[0]*(innerWidth*.7+200),dy=p[1]*(innerHeight*.6+200),rot=p[0]*25;
+  var fr=[],n=9;
+  for(var i=0;i<=n;i++){var q=i/n,e=Math.pow(q,1.6),fl=i%2?.55:1.08;
+    fr.push({transform:'translate3d('+(mx+dx*e).toFixed(1)+'px,'+(my+dy*e-Math.sin(q*Math.PI)*40).toFixed(1)+'px,0) rotate('+(rot*q).toFixed(1)+'deg) scale('+(1-q*.55).toFixed(2)+') scaleX('+(i===0||i===n?1:fl)+')',opacity:i===n?0:1})}
+  c.classList.add('lgc-gone');
+  var a=f.animate(fr,{duration:1000,easing:'linear'});
+  a.onfinish=function(){f.remove()};
+  setTimeout(function(){c.classList.remove('lgc-gone')},1050);
+  return 520;
+}
+d.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest(FLY);
+  if(!a||a.dataset.lgcGo||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  var w=fly();if(!w)return;
+  e.preventDefault();
+  setTimeout(function(){a.dataset.lgcGo='1';a.click();delete a.dataset.lgcGo},w);
+},true);
 })();
